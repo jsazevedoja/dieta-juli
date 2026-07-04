@@ -16,11 +16,11 @@ Este proyecto forma parte de un sistema más amplio de organización personal qu
 
 - **Menú semanal** — 7 días con todas las comidas, raciones y gramos exactos
 - **Navegación por días** — desliza entre días con flechas
-- 🍳 / 🧊 **Badges por día** — identifica de un vistazo si cocinas hoy o es día pre-preparado
-- ⚠️ **Avisos activos** — alertas para confirmar con el nutricionista (bebida de avena, langostinos)
-- 💡 **Organización** — rutina semanal real: cuándo cocinar, cómo preparar en batch, trucos de pesado
-- 🛒 **Lista de compra** — con checkboxes interactivos, por categoría, ajustada a Mercadona y Gadis Arteixo
-- 📱 **Funciona offline** — instalable en iPhone desde Safari
+- **Badges por día** — identifica de un vistazo si cocinas hoy o es día pre-preparado
+- **Avisos activos** — alertas para confirmar con el nutricionista (bebida de avena, langostinos)
+- **Organización** — rutina semanal real: cuándo cocinar, cómo preparar en batch, trucos de pesado
+- **Lista de compra** — con checkboxes interactivos, por categoría, ajustada a Mercadona y Gadis Arteixo
+- **Funciona offline** — instalable en iPhone desde Safari
 
 ---
 
@@ -39,7 +39,7 @@ Cuando cambie el plan alimentario o haya ajustes:
 
 1. Ve al repositorio en GitHub: `github.com/jsazevedoja/dieta-juli`
 2. Abre el archivo `dieta-juli.html`
-3. Haz clic en el **lápiz ✏️** para editar
+3. Haz clic en el **lápiz** para editar
 4. Reemplaza el contenido con la nueva versión
 5. Haz clic en **"Commit changes"**
 6. Espera **1–2 minutos** y el app se actualiza automáticamente
