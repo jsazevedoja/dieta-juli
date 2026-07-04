@@ -1,4 +1,4 @@
-# 🥗 Dieta Juli
+# Dieta Juli
 
 Personal meal plan tracking app — built as an installable PWA for iPhone.
 
@@ -14,13 +14,13 @@ This project is part of a broader personal organization system covering five are
 
 ## Features
 
-- 📅 **Weekly menu** — 7 days with all meals, portions and exact grams
-- ‹ › **Day navigation** — swipe between days with arrows
-- 🍳 / 🧊 **Day badges** — see at a glance whether you cook today or it's a pre-prepped day
-- ⚠️ **Active warnings** — alerts to confirm with the nutritionist (oat drink, prawns)
-- 💡 **Organization** — real weekly routine: when to cook, how to batch prep, weighing tips
-- 🛒 **Shopping list** — interactive checkboxes, by category, tailored to Mercadona and Gadis Arteixo
-- 📱 **Works offline** — installable on iPhone from Safari
+- **Weekly menu** — 7 days with all meals, portions and exact grams
+- **Day navigation** — swipe between days with arrows
+- **Day badges** — see at a glance whether you cook today or it's a pre-prepped day
+- **Active warnings** — alerts to confirm with the nutritionist (oat drink, prawns)
+- **Organization** — real weekly routine: when to cook, how to batch prep, weighing tips
+- **Shopping list** — interactive checkboxes, by category, tailored to Mercadona and Gadis Arteixo
+- **Works offline** — installable on iPhone from Safari
 
 ---
 
@@ -39,7 +39,7 @@ When the meal plan changes or adjustments are needed:
 
 1. Go to the repository on GitHub: `github.com/jsazevedoja/dieta-juli`
 2. Open `dieta-juli.html`
-3. Click the **pencil ✏️** to edit
+3. Click the **pencil** to edit
 4. Replace the content with the new version
 5. Click **"Commit changes"**
 6. Wait **1–2 minutes** — the app updates automatically
