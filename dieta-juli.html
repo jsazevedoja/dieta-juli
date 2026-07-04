@@ -1,122 +1,99 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Dieta Juli">
-<meta name="theme-color" content="#1a1a2e">
-<title>Dieta · Juliana</title>
+<meta name="theme-color" content="#1a1a1a">
+<title>Dieta · Juli</title>
 <style>
-  :root {
-    --bg: #f7f5f0;
-    --card: #ffffff;
-    --green: #2d7a5f;
-    --green-light: #e8f5f0;
-    --green-mid: #a8d5c2;
-    --amber: #c47c1a;
-    --amber-light: #fdf3e3;
-    --coral: #c0442a;
-    --coral-light: #fdf0ed;
-    --text: #1a1a1a;
-    --text2: #555;
-    --text3: #999;
-    --border: #e8e4dc;
-    --vegan: #2d7a5f;
-    --vegan-bg: #e8f5f0;
-    --radius: 14px;
-    --shadow: 0 2px 12px rgba(0,0,0,.07);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; background: var(--bg); font-family: -apple-system, 'SF Pro Text', sans-serif; color: var(--text); overscroll-behavior: none; }
-
-  /* LAYOUT */
-  .app { display: flex; flex-direction: column; height: 100dvh; max-width: 430px; margin: 0 auto; position: relative; }
-  .header { padding: env(safe-area-inset-top, 12px) 20px 0; background: var(--bg); }
-  .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0 10px; border-bottom: 1px solid var(--border); }
-  .header h1 { font-size: 22px; font-weight: 700; letter-spacing: -.5px; }
-  .header h1 span { color: var(--green); }
-  .kcal-pill { font-size: 12px; font-weight: 600; background: var(--green); color: #fff; border-radius: 20px; padding: 4px 10px; }
-
-  /* TABS */
-  .tabs-wrap { overflow-x: auto; scrollbar-width: none; padding: 12px 20px 0; background: var(--bg); }
-  .tabs-wrap::-webkit-scrollbar { display: none; }
-  .tabs { display: flex; gap: 6px; }
-  .tab { flex-shrink: 0; padding: 7px 14px; border-radius: 20px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1.5px solid var(--border); background: var(--card); color: var(--text2); transition: all .15s; }
-  .tab.active { background: var(--text); color: #fff; border-color: var(--text); }
-  .tab.vegan { border-color: var(--green); color: var(--green); }
-  .tab.vegan.active { background: var(--green); color: #fff; border-color: var(--green); }
-  .tab.shop { border-color: var(--amber); color: var(--amber); }
-  .tab.shop.active { background: var(--amber); color: #fff; }
-
-  /* CONTENT */
-  .content { flex: 1; overflow-y: auto; padding: 14px 16px calc(env(safe-area-inset-bottom, 0px) + 16px); }
-  .screen { display: none; }
-  .screen.visible { display: block; }
-
-  /* DAY HEADER */
-  .day-head { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-  .day-title { font-size: 19px; font-weight: 700; letter-spacing: -.3px; }
-  .vbadge { font-size: 10px; font-weight: 700; background: var(--vegan-bg); color: var(--vegan); border-radius: 20px; padding: 3px 9px; letter-spacing: .2px; text-transform: uppercase; }
-
-  /* MACRO BAR */
-  .mbar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
-  .mpill { font-size: 11px; font-weight: 600; border-radius: 20px; padding: 4px 10px; }
-  .mpill.k { background: var(--text); color: #fff; }
-  .mpill.p { background: var(--green-light); color: var(--green); }
-  .mpill.c { background: var(--amber-light); color: var(--amber); }
-  .mpill.f { background: var(--coral-light); color: var(--coral); }
-
-  /* MEAL CARD */
-  .meal { background: var(--card); border-radius: var(--radius); margin-bottom: 10px; box-shadow: var(--shadow); overflow: hidden; }
-  .meal-head { display: flex; align-items: center; padding: 13px 16px; gap: 12px; cursor: pointer; }
-  .meal-icon { width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
-  .ic-dej { background: #fff8e8; }
-  .ic-col { background: #e8f5f0; }
-  .ic-alm { background: #fdf0ed; }
-  .ic-lan { background: #f0eef9; }
-  .ic-jan { background: #e8f0ff; }
-  .meal-info { flex: 1; min-width: 0; }
-  .meal-time { font-size: 10px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 2px; }
-  .meal-name { font-size: 14px; font-weight: 600; line-height: 1.3; color: var(--text); }
-  .meal-chevron { font-size: 16px; color: var(--text3); transition: transform .2s; flex-shrink: 0; }
-  .meal-chevron.open { transform: rotate(90deg); }
-  .meal-body { display: none; padding: 0 16px 14px; border-top: 1px solid var(--border); }
-  .meal-body.open { display: block; }
-  .meal-items { font-size: 13px; color: var(--text2); line-height: 1.9; padding-top: 12px; }
-  .meal-items em { color: var(--text3); font-style: italic; font-size: 12px; display: block; margin-top: 4px; line-height: 1.5; }
-  .meal-items strong { color: var(--text); }
-  .meal-macros { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-  .meal-macros .mp { font-size: 11px; font-weight: 600; background: var(--green-light); color: var(--green); padding: 3px 8px; border-radius: 20px; }
-  .meal-macros .mc { font-size: 11px; font-weight: 600; background: var(--amber-light); color: var(--amber); padding: 3px 8px; border-radius: 20px; }
-  .meal-macros .mf { font-size: 11px; font-weight: 600; background: var(--coral-light); color: var(--coral); padding: 3px 8px; border-radius: 20px; }
-  .tip { font-size: 11px; color: var(--green); background: var(--green-light); border-radius: 8px; padding: 7px 10px; margin-top: 10px; line-height: 1.5; }
-
-  /* SHOP */
-  .shop-section { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: .6px; margin: 18px 0 8px; }
-  .shop-note { font-size: 12px; color: var(--text3); background: var(--card); border-radius: 10px; padding: 10px 13px; margin-bottom: 12px; line-height: 1.6; box-shadow: var(--shadow); }
-  .shop-cat { background: var(--card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
-  .shop-cat-head { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; cursor: pointer; font-size: 14px; font-weight: 600; }
-  .shop-cat-arrow { color: var(--text3); font-size: 14px; transition: transform .2s; }
-  .shop-cat-arrow.open { transform: rotate(90deg); }
-  .shop-cat-body { display: none; border-top: 1px solid var(--border); padding: 4px 0; }
-  .shop-cat-body.open { display: block; }
-  .shop-item { display: flex; align-items: center; justify-content: space-between; padding: 9px 16px; border-bottom: 1px solid var(--border); gap: 8px; cursor: pointer; }
-  .shop-item:last-child { border-bottom: none; }
-  .shop-item-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
-  .check-box { width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all .15s; }
-  .check-box.checked { background: var(--green); border-color: var(--green); }
-  .check-box.checked::after { content: '✓'; color: #fff; font-size: 12px; font-weight: 700; }
-  .shop-item-name { font-size: 13px; color: var(--text); line-height: 1.3; }
-  .shop-item-name.checked { color: var(--text3); text-decoration: line-through; }
-  .shop-qty { font-size: 11px; color: var(--text3); white-space: nowrap; flex-shrink: 0; }
-  .day-shop { background: var(--card); border-radius: var(--radius); margin-bottom: 8px; box-shadow: var(--shadow); overflow: hidden; }
-  .day-shop-head { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; cursor: pointer; }
-  .day-shop-title { font-size: 14px; font-weight: 600; }
-  .day-shop-body { display: none; border-top: 1px solid var(--border); padding: 10px 16px; font-size: 13px; color: var(--text2); line-height: 1.9; }
-  .day-shop-body.open { display: block; }
-  .reset-btn { display: block; width: 100%; margin-top: 16px; padding: 13px; background: var(--coral-light); color: var(--coral); border: none; border-radius: var(--radius); font-size: 13px; font-weight: 600; cursor: pointer; }
+:root{--bg:#f5f4f0;--card:#fff;--green:#2d7a5f;--gl:#e6f4ee;--amber:#b8720f;--al:#fdf2e0;--coral:#b83a22;--cl:#fceee9;--text:#1a1a1a;--t2:#4a4a4a;--t3:#909090;--border:#e5e1d8;--r:14px;--sh:0 1px 8px rgba(0,0,0,.08)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Text',sans-serif;color:var(--text);overscroll-behavior:none}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:430px;margin:0 auto}
+.header{padding:env(safe-area-inset-top,12px) 20px 0;background:var(--bg)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;border-bottom:1px solid var(--border)}
+.header h1{font-size:21px;font-weight:700;letter-spacing:-.4px}
+.header h1 span{color:var(--green)}
+.pill{font-size:11px;font-weight:600;background:var(--green);color:#fff;border-radius:20px;padding:4px 11px}
+.tabs-wrap{overflow-x:auto;scrollbar-width:none;padding:10px 14px 0;background:var(--bg)}
+.tabs-wrap::-webkit-scrollbar{display:none}
+.tabs{display:flex;gap:5px}
+.tab{flex-shrink:0;padding:6px 13px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--t2);transition:all .15s;white-space:nowrap}
+.tab.active{background:var(--text);color:#fff;border-color:var(--text)}
+.tab.tips{border-color:var(--amber);color:var(--amber)}
+.tab.tips.active{background:var(--amber);color:#fff}
+.tab.shop{border-color:#7c3aed;color:#7c3aed}
+.tab.shop.active{background:#7c3aed;color:#fff}
+.content{flex:1;overflow-y:auto;padding:12px 14px calc(env(safe-area-inset-bottom,0px)+14px)}
+.screen{display:none}.screen.visible{display:block}
+.day-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.nav-btn{width:36px;height:36px;border-radius:10px;background:var(--card);border:1.5px solid var(--border);font-size:18px;color:var(--t2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sh)}
+.nav-btn:active{background:var(--border)}
+.day-info{flex:1;text-align:center;padding:0 8px}
+.rac-bar{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
+.rp{font-size:11px;font-weight:600;border-radius:20px;padding:3px 9px}
+.rp.tot{background:var(--text);color:#fff}
+.rp.p{background:var(--gl);color:var(--green)}
+.rp.hc{background:var(--al);color:var(--amber)}
+.rp.g{background:var(--cl);color:var(--coral)}
+.rp.cook{background:var(--al);color:var(--amber);border:1px solid var(--amber)}
+.rp.prep{background:var(--cl);color:var(--coral);border:1px solid var(--coral)}
+.meal{background:var(--card);border-radius:var(--r);margin-bottom:9px;box-shadow:var(--sh);overflow:hidden}
+.meal-head{display:flex;align-items:center;padding:12px 14px;gap:11px;cursor:pointer}
+.meal-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.i-des{background:#fff8e0}.i-alm{background:#e8f8f0}.i-com{background:#fdecea}.i-mer{background:#ede8f8}.i-cen{background:#e6eeff}
+.meal-info{flex:1;min-width:0}
+.meal-label{font-size:10px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.meal-name{font-size:14px;font-weight:600;line-height:1.3}
+.chevron{font-size:16px;color:var(--t3);transition:transform .2s;flex-shrink:0}
+.chevron.open{transform:rotate(90deg)}
+.meal-body{display:none;padding:0 14px 13px;border-top:1px solid var(--border)}
+.meal-body.open{display:block}
+.items{font-size:13px;color:var(--t2);line-height:1.95;padding-top:11px}
+.items .rc{font-size:11px;font-weight:600;color:var(--t3);margin-left:2px}
+.items em{display:block;font-size:11px;color:var(--t3);font-style:italic;margin-top:5px;line-height:1.5}
+.macros{display:flex;gap:5px;margin-top:9px;flex-wrap:wrap}
+.mm{font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px}
+.mm.p{background:var(--gl);color:var(--green)}
+.mm.hc{background:var(--al);color:var(--amber)}
+.mm.g{background:var(--cl);color:var(--coral)}
+.tbox{font-size:11px;color:var(--green);background:var(--gl);border-radius:8px;padding:7px 10px;margin-top:9px;line-height:1.5}
+.wbox{font-size:11px;color:var(--amber);background:var(--al);border-radius:8px;padding:7px 10px;margin-top:9px;line-height:1.5;border-left:2px solid var(--amber)}
+.ts{margin-bottom:18px}
+.ts-title{font-size:12px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-left:2px}
+.tc{background:var(--card);border-radius:var(--r);padding:13px 15px;margin-bottom:8px;box-shadow:var(--sh)}
+.tc-head{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.tc-icon{font-size:18px}
+.tc-title{font-size:14px;font-weight:600}
+.tc-body{font-size:13px;color:var(--t2);line-height:1.7}
+.tc-body strong{color:var(--text)}
+.tc-body em{color:var(--t3);font-style:italic}
+.tl{border-left:2px solid var(--border);padding-left:14px;margin-top:6px}
+.tl-item{position:relative;padding:5px 0}
+.tl-item::before{content:'';position:absolute;left:-18px;top:11px;width:8px;height:8px;border-radius:50%;background:var(--green)}
+.tl-time{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.3px}
+.tl-desc{font-size:13px;color:var(--t2);line-height:1.5}
+.shop-note{font-size:12px;color:var(--t2);background:var(--al);border-radius:10px;padding:10px 13px;margin-bottom:12px;line-height:1.6;border-left:3px solid var(--amber)}
+.ss{font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin:16px 0 7px}
+.sc{background:var(--card);border-radius:var(--r);margin-bottom:7px;box-shadow:var(--sh);overflow:hidden}
+.sc-head{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;cursor:pointer;font-size:14px;font-weight:600}
+.ca{color:var(--t3);font-size:14px;transition:transform .2s}
+.ca.open{transform:rotate(90deg)}
+.sc-body{display:none;border-top:1px solid var(--border);padding:3px 0}
+.sc-body.open{display:block}
+.si{display:flex;align-items:center;justify-content:space-between;padding:9px 15px;border-bottom:1px solid var(--border);gap:8px;cursor:pointer}
+.si:last-child{border-bottom:none}
+.si-l{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.cb{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.cb.checked{background:var(--green);border-color:var(--green)}
+.cb.checked::after{content:'✓';color:#fff;font-size:12px;font-weight:700}
+.si-n{font-size:13px;color:var(--text);line-height:1.3}
+.si-n.checked{color:var(--t3);text-decoration:line-through}
+.si-q{font-size:11px;color:var(--t3);white-space:nowrap;flex-shrink:0}
+.reset-btn{display:block;width:100%;margin-top:14px;padding:13px;background:var(--cl);color:var(--coral);border:none;border-radius:var(--r);font-size:13px;font-weight:600;cursor:pointer}
 </style>
 </head>
 <body>
@@ -124,349 +101,428 @@
   <div class="header">
     <div class="header-inner">
       <h1>Dieta <span>Juli</span></h1>
-      <div class="kcal-pill">~1.540 kcal/dia</div>
+      <div class="pill">~1.500 kcal/día</div>
     </div>
   </div>
-
   <div class="tabs-wrap">
     <div class="tabs">
-      <div class="tab active" onclick="showDay('seg',this)">Seg</div>
-      <div class="tab vegan" onclick="showDay('ter',this)">Ter 🌱</div>
-      <div class="tab" onclick="showDay('qua',this)">Qua</div>
-      <div class="tab vegan" onclick="showDay('qui',this)">Qui 🌱</div>
-      <div class="tab" onclick="showDay('sex',this)">Sex</div>
-      <div class="tab" onclick="showDay('sab',this)">Sáb</div>
-      <div class="tab" onclick="showDay('dom',this)">Dom</div>
-      <div class="tab shop" onclick="showDay('shop',this)">🛒 Mercado</div>
+      <div class="tab active" onclick="showTab('days')">📅 Menú</div>
+      <div class="tab tips" onclick="showTab('tips')">💡 Organización</div>
+      <div class="tab shop" onclick="showTab('shop')">🛒 Compra</div>
     </div>
   </div>
 
   <div class="content">
 
-    <!-- SEGUNDA -->
-    <div class="screen visible" id="seg">
-      <div class="day-head"><div class="day-title">Segunda-feira</div></div>
-      <div class="mbar"><span class="mpill k">~1.545 kcal</span><span class="mpill p">P 112g</span><span class="mpill c">C 150g</span><span class="mpill f">G 43g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">☕</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Ovo mexido + pão integral + café com aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">☕ Café infusão 150ml s/ açúcar<br>🥛 Leite de aveia 200ml<br>🥚 1 ovo mexido temperado<br>🍞 2 fatias pão integral<br>🍑 1 pêssego ou nectarina</div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
+    <!-- MENÚ -->
+    <div class="screen visible" id="days">
+      <div class="day-nav">
+        <button class="nav-btn" onclick="changeDay(-1)">‹</button>
+        <div class="day-info">
+          <div id="day-title" style="font-size:18px;font-weight:700;letter-spacing:-.3px"></div>
+          <div id="day-sub" style="font-size:12px;color:var(--t3);margin-top:1px"></div>
+        </div>
+        <button class="nav-btn" onclick="changeDay(1)">›</button>
       </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🥤</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Whey morango + aveia + banana</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥤 2 scoops whey morango (40g)<br>🥛 200ml leite de aveia<br>🍌 1 banana pequena<br><em>Bater tudo junto ou na shakeira</em></div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 30g</span><span class="mf">G 4g</span></div></div>
+      <div class="rac-bar" id="day-badges"></div>
+      <div id="meal-container"></div>
+    </div>
+
+    <!-- ORGANIZACIÓN -->
+    <div class="screen" id="tips">
+      <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">💡 Organización</div>
+      <div style="font-size:13px;color:var(--t3);margin-bottom:14px">Cocinas lunes, miércoles y viernes. Sin fin de semana.</div>
+
+      <div class="ts">
+        <div class="ts-title">🗓 Lunes — el día clave</div>
+
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🛒</div><div class="tc-title">13h — Pausa del trabajo: compra rápida</div></div>
+          <div class="tc-body">Trabajas desde casa — aprovecha la pausa del mediodía. <strong>Ve con la lista hecha (pestaña 🛒) y la tripa llena.</strong> Compra exactamente lo de la lista, sin improvisar. Tarda ~20–25 min. Llegas, cocinas tu comida del día 1 para ti y Jesús, y ya estás.</div>
+        </div>
+
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🍳</div><div class="tc-title">Después de comer — mini prep de 15 min</div></div>
+          <div class="tc-body">
+            <div class="tl">
+              <div class="tl-item"><div class="tl-time">Mientras recoges la cocina</div><div class="tl-desc">Pon las patatas del martes y jueves a hervir (ya que tienes el fuego encendido). Son ~260g en total.</div></div>
+              <div class="tl-item"><div class="tl-time">10 min después</div><div class="tl-desc">Patatas listas → tupper en nevera. Divide el fiambre (york, serrano, pavo) en bolsitas para 3–4 días. Lava y seca la lechuga/canónigos — tupper con papel de cocina, duran 4–5 días.</div></div>
+              <div class="tl-item"><div class="tl-time">Opcional +5 min</div><div class="tl-desc">Pesa y congela las raciones de carne en bolsitas individuales. La noche anterior sacas la del día siguiente a la nevera. Sin pesar a mitad de semana.</div></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🍗</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Frango xadrez fitness + arroz integral</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍗 120g peito de frango em cubos<br>🥦 Brócolis + pimentão + cenoura + cebola<br>🍚 4 col. sopa arroz integral<br>🫒 Azeite + shoyu baixo sódio<br>🥗 Alface + tomate<br><em>💡 Faz o dobro — guarda para quarta!</em></div><div class="meal-macros"><span class="mp">P 32g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
+
+      <div class="ts">
+        <div class="ts-title">🗓 Miércoles — segundo día de cocina</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🐟</div><div class="tc-title">Comida (día 3) — cocina en lote</div></div>
+          <div class="tc-body">Toca merluza en la comida y lenguado en la cena. <strong>Cocínalos los dos a la vez al mediodía</strong> — el lenguado aguanta en nevera hasta la noche. Limpias una sola vez. También puedes preparar la comida del jueves (día 4) mientras tienes la cocina en marcha — la ensalada de patata se monta en frío.</div>
+        </div>
       </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🫙</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Iogurte Alpro aveia + fruta verão</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🫙 1 pote Alpro Natural Aveia (200g)<br>🍑 1 pêssego ou nectarina fatiada<br>🌾 1 col. sopa aveia em flocos<br><em>Opção B: maçã + 10 amêndoas</em></div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 28g</span><span class="mf">G 5g</span></div></div>
+
+      <div class="ts">
+        <div class="ts-title">🗓 Viernes — tercer día de cocina</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🦃</div><div class="tc-title">Comida (día 5) — prepara también el sábado</div></div>
+          <div class="tc-body">Cocinas las chuletas de pavo del viernes. <strong>Si quieres, prepara también la comida del sábado (día 6)</strong> — el lomo de cerdo con guisantes se hace rápido y aguanta 2 días en nevera. El sábado solo calientas.</div>
+        </div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🍔</div><div class="tc-title">Burguer de pollo (cena sábado)</div></div>
+          <div class="tc-body">Compra el burguer ya hecho en Mercadona o prepara dos el jueves mientras cocinas la cena. <strong>El sábado solo calentas — 5 minutos.</strong></div>
+        </div>
       </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🥗</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Salada de frango, grão-de-bico e tomate cherry</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥗 Rúcula + canónigos 70g<br>🍗 100g frango grelhado frio em tiras<br>🫘 60g grão-de-bico cozido<br>🥒 Pepino + tomate cherry + cebola fina<br>🍋 Vinagrete: azeite + mostarda + limão<div class="tip">💡 Quando fizeres o almoço, grelha 100g extra de frango para este jantar</div></div><div class="meal-macros"><span class="mp">P 32g</span><span class="mc">C 22g</span><span class="mf">G 10g</span></div></div>
+
+      <div class="ts">
+        <div class="ts-title">🫘 Garbanzos — olla a presión</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🫘</div><div class="tc-title">Cocer y congelar — hazlo una vez al mes</div></div>
+          <div class="tc-body">
+            <div class="tl">
+              <div class="tl-item"><div class="tl-time">Remojar</div><div class="tl-desc">Deja los garbanzos secos en remojo 8–12h (la noche antes).</div></div>
+              <div class="tl-item"><div class="tl-time">Olla a presión</div><div class="tl-desc">Escurre, añade agua (doble de volumen), sal y laurel. Cierra y cuece 20–25 min a presión alta. Deja despresurizar sola.</div></div>
+              <div class="tl-item"><div class="tl-time">Pesar y congelar</div><div class="tl-desc">Escurre bien. Pesa porciones de <strong>240g cocidos</strong> (= tu ración del día 2). Congela en bolsas. La noche anterior sacas una bolsa a la nevera.</div></div>
+            </div>
+            <em style="display:block;margin-top:8px">El PDF dice: pesar legumbres de bote ya cocidas y escurridas — lo mismo aplica a las tuyas cocidas en casa.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">🦐 Langostinos congelados con piel</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🦐</div><div class="tc-title">Cómo usar tus langostinos como las gambas</div></div>
+          <div class="tc-body">
+            El PDF indica pesar en crudo. Con langostinos con piel congelados el proceso es:
+            <div class="tl" style="margin-top:8px">
+              <div class="tl-item"><div class="tl-time">Noche anterior</div><div class="tl-desc">Pasa los langostinos de congelador a nevera para que descongelen despacio.</div></div>
+              <div class="tl-item"><div class="tl-time">Antes de cocinar</div><div class="tl-desc">Descascáralos. <strong>Pesas solo la carne limpa — sin piel ni cabeza.</strong> Para tener 170g de carne necesitas comprar ~270g con piel.</div></div>
+              <div class="tl-item"><div class="tl-time">Confirma con David</div><div class="tl-desc">Pregúntale si la ración de 170g es sobre carne limpia (lo más probable) o sobre el peso entero con piel.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">🥛 Bebida de avena — nota importante</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🥛</div><div class="tc-title">El PDF no menciona bebidas vegetales</div></div>
+          <div class="tc-body">David Gracia habla solo de leche de vaca en el menú. La bebida de avena Alpro tiene <strong>menos proteína y más HC</strong> que la leche, así que la equivalencia no es exacta. <strong>Lo más seguro: pregúntale a David la cantidad exacta de bebida de avena que equivale a 0,5P+0,5HC.</strong> Hasta que lo confirmes, en el app está marcado con una nota de aviso en cada desayuno que lo usa.</div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">⚖️ Pesado y medidas</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">📏</div><div class="tc-title">Reglas rápidas</div></div>
+          <div class="tc-body">
+            <strong>Siempre en crudo:</strong> carne, pescado, arroz, patata.<br>
+            <strong>Excepción:</strong> garbanzos cocidos → pesar ya cocidos y escurridos.<br>
+            <strong>AOVE es crítico</strong> — compra cucharas medidoras de 5–10–15g. La diferencia entre 5g y 15g son 100 kcal que no ves.<br><br>
+            <strong>Truco del arroz cocinado (día 7):</strong><br>
+            <em>Si 150g crudo → 250g cocinado, tu ración de 60g crudo = 60×250÷150 = 100g cocinado.</em><br><br>
+            <strong>Medidas caseras:</strong> cuando lleves 2–3 semanas pesando, anota equivalencias: "130g patata = patata mediana de mi cocina". Con el tiempo dejas de pesar sin perder precisión.
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">🧠 Momento difícil — fin del día</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">⚡</div><div class="tc-title">Plan anti-ansiedad nocturna</div></div>
+          <div class="tc-body">
+            <strong>1.</strong> Toma la merienda antes de decidir nada.<br>
+            <strong>2.</strong> Cenas rápidas (&lt;10 min): revuelto de huevos, tortilla, lenguado a la plancha, burguer de pollo.<br>
+            <strong>3.</strong> Si algo salió mal hoy — retomas mañana. Sin drama.<br><br>
+            <em>"Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando." — David Gracia</em>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- TERÇA VEGANO -->
-    <div class="screen" id="ter">
-      <div class="day-head"><div class="day-title">Terça-feira</div><div class="vbadge">🌱 Vegan</div></div>
-      <div class="mbar"><span class="mpill k">~1.530 kcal</span><span class="mpill p">P 88g</span><span class="mpill c">C 170g</span><span class="mpill f">G 44g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">🌾</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Bowl de aveia com banana e cacau</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🌾 5 col. sopa flocão (aveia grossa)<br>🥛 200ml leite de aveia Alpro<br>🍌 1 banana madura amassada<br>🍫 1 col. sobremesa cacau em pó s/ açúcar<br>☕ Café infusão 150ml s/ açúcar<br><em>💡 Deixa de molho na véspera — fica cremoso e é instantâneo de manhã</em></div><div class="meal-macros"><span class="mp">P 14g</span><span class="mc">C 54g</span><span class="mf">G 8g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🍌</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Bebida vegetal + bolinho de banana e aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥛 200ml leite de aveia ou coco<br>🍌 Bolinho: banana + aveia + fermento → micro 2min<br><em>Receita da nutri: consumir até 100g assado</em></div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 40g</span><span class="mf">G 6g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🫘</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Cuscuz marroquino + feijão preto veg</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🌾 ⅓ xícara cuscuz marroquino com legumes<br>🫘 2 conchas feijão preto veg<br>🥗 Alface + tomate + pepino<br>🫒 1 col. sobremesa azeite<br><em>🇧🇷 Inspiração baiana — feijão light sem carne</em><div class="tip">💡 Prepara o feijão no domingo — rende 6 porções para a semana</div></div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 50g</span><span class="mf">G 9g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🥑</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Tosta integral com abacate e tomate</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍞 2 fatias pão integral<br>🥑 ¼ abacate amassado com limão e sal<br>🍅 Tomate cherry fatiado<br>🌿 Orégano ou pimenta preta<br><em>Opção B: maçã + pasta amendoim natural</em></div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 30g</span><span class="mf">G 10g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🫘</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Lentilha e quinoa com verduras</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🫘 1 porção lentilha + quinoa com verduras (receita do ficheiro)<br>🥒 Salada de pepino: pepino + vinagre de arroz + hortelã + azeite<br><em>Proteína completa vegetal — lentilha + quinoa têm todos os aminoácidos</em></div><div class="meal-macros"><span class="mp">P 18g</span><span class="mc">C 44g</span><span class="mf">G 8g</span></div></div>
-      </div>
-    </div>
-
-    <!-- QUARTA -->
-    <div class="screen" id="qua">
-      <div class="day-head"><div class="day-title">Quarta-feira</div></div>
-      <div class="mbar"><span class="mpill k">~1.540 kcal</span><span class="mpill p">P 112g</span><span class="mpill c">C 150g</span><span class="mpill f">G 43g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">☕</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Ovo mexido + pão integral + café com aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">☕ Café 150ml + leite de aveia 200ml<br>🥚 1 ovo mexido<br>🍞 2 fatias pão integral<br>🍇 10 uvas</div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🥤</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Whey morango + aveia + banana</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥤 2 scoops whey morango + 200ml leite de aveia + 1 banana<br><em>Bater ou shakeira</em></div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 30g</span><span class="mf">G 4g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🍗</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Frango xadrez (sobra seg.) + pisto de verduras</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍗 Porção frango xadrez guardada de segunda<br>🫕 3 col. sopa pisto de verduras<br>🍚 3 col. sopa arroz branco<br>🥗 Salada de folhas<div class="tip">💡 Só aquecer — menos de 5 minutos na cozinha!</div></div><div class="meal-macros"><span class="mp">P 32g</span><span class="mc">C 38g</span><span class="mf">G 10g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🍌</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Opção A: banana + amendoim · Opção B: ovo + tosta</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items"><strong>A:</strong> 🍌 1 banana + 1 col. sopa pasta de amendoim<br><strong>B:</strong> 🥚 2 ovos cozidos + 1 fatia pão integral</div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 26g</span><span class="mf">G 8g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🐟</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Salada de atum, ovo, pepino e cenoura</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🐟 1 lata atum ao natural<br>🥚 2 ovos cozidos em quartos<br>🥗 Alface + tomate cherry + pepino + cenoura ralada + cebola fina<br>🍋 Azeite + vinagre de arroz + limão + pimenta</div><div class="meal-macros"><span class="mp">P 36g</span><span class="mc">C 18g</span><span class="mf">G 12g</span></div></div>
-      </div>
-    </div>
-
-    <!-- QUINTA VEGANO -->
-    <div class="screen" id="qui">
-      <div class="day-head"><div class="day-title">Quinta-feira</div><div class="vbadge">🌱 Vegan</div></div>
-      <div class="mbar"><span class="mpill k">~1.520 kcal</span><span class="mpill p">P 86g</span><span class="mpill c">C 172g</span><span class="mpill f">G 42g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">🌽</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Cuscuz nordestino salgado com abacate</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🌽 2 col. sopa flocão + água quente + pitada sal<br>🍅 Tomate em rodelas<br>🥑 ¼ abacate fatiado<br>🫒 Fio de azeite<br>☕ Café 150ml + leite de aveia 150ml<br><em>🇧🇷 Cuscuz nordestino autêntico — flocão com água quente, sem cozinhar</em></div><div class="meal-macros"><span class="mp">P 10g</span><span class="mc">C 46g</span><span class="mf">G 12g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🫙</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Iogurte Alpro + fruta de verão</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🫙 1 pote Alpro Natural Aveia (200g)<br>🍑 1 pêssego ou nectarina<br>🌾 1 col. sopa aveia</div><div class="meal-macros"><span class="mp">P 9g</span><span class="mc">C 32g</span><span class="mf">G 5g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🫘</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Feijão preto veg + arroz integral + pisto</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🫘 2 conchas feijão preto veg (sobra da terça)<br>🍚 4 col. sopa arroz integral<br>🫕 3 col. sopa pisto de verduras<br>🥗 Alface + tomate + azeite<br><em>Feijão + arroz = proteína completa. Fundamental nos dias veganos.</em></div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 54g</span><span class="mf">G 7g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🍑</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Opção A: pêssego + amêndoas · Opção B: pão + amendoim</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items"><strong>A:</strong> 🍑 1 pêssego + 10 amêndoas<br><strong>B:</strong> 🍞 1 fatia pão integral + 1 col. pasta de amendoim + canela<div class="tip">🏋️ Quinta é dia de cansaço — lanche simples e rápido</div></div><div class="meal-macros"><span class="mp">P 6g</span><span class="mc">C 24g</span><span class="mf">G 10g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🥣</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Crema de calabacín + tosta integral</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥣 Crema de calabacín (abobrinha + cenoura + cebola + aipo — bater)<br>🍞 1 fatia pão integral<br>🫒 Fio de azeite para finalizar<br>🌿 Coentro ou salsinha<br><em>Sopa quente na quinta — leve, reconfortante, rápida de aquecer</em></div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 32g</span><span class="mf">G 8g</span></div></div>
-      </div>
-    </div>
-
-    <!-- SEXTA -->
-    <div class="screen" id="sex">
-      <div class="day-head"><div class="day-title">Sexta-feira</div></div>
-      <div class="mbar"><span class="mpill k">~1.550 kcal</span><span class="mpill p">P 112g</span><span class="mpill c">C 150g</span><span class="mpill f">G 45g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">☕</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Ovo mexido + pão integral + café com aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">☕ Café 150ml + leite de aveia 200ml<br>🥚 1 ovo mexido<br>🍞 2 fatias pão integral<br>🍇 Punhado de uvas ou 🍑 pêssego</div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🥤</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Whey morango + aveia + banana</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥤 2 scoops whey morango + 200ml leite de aveia + 1 banana<br><em>Bater ou shakeira</em></div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 30g</span><span class="mf">G 4g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🍗</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Pechuga empanada no forno + batata + salada</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍗 Pechuga empanada no forno (receita do ficheiro)<br>🥔 1 batata média assada<br>🥗 Alface + tomate + azeite + vinagre<div class="tip">💡 Assa 2 pechugas — guarda uma para o sábado!</div></div><div class="meal-macros"><span class="mp">P 34g</span><span class="mc">C 40g</span><span class="mf">G 10g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🫙</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Opção A: Alpro + fruta · Opção B: cottage + fruta</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items"><strong>A:</strong> 🫙 Alpro 200g + pêssego ou nectarina<br><strong>B:</strong> 🧀 3 col. sopa cottage + fruta de verão + fio de mel</div><div class="meal-macros"><span class="mp">P 10g</span><span class="mc">C 22g</span><span class="mf">G 5g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🍝</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Mezzelune Garofalo boletus y trufa 🎉</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍝 115g Mezzelune Garofalo (metade da embalagem)<br>🫒 Fio de azeite + pimenta preta + parmesão lascado<br>🥗 Rúcula simples com limão<br><em>🎉 Sexta merece algo especial — rápido e delicioso!</em></div><div class="meal-macros"><span class="mp">P 18g</span><span class="mc">C 30g</span><span class="mf">G 14g</span></div></div>
-      </div>
-    </div>
-
-    <!-- SÁBADO -->
-    <div class="screen" id="sab">
-      <div class="day-head"><div class="day-title">Sábado</div></div>
-      <div class="mbar"><span class="mpill k">~1.555 kcal</span><span class="mpill p">P 108g</span><span class="mpill c">C 155g</span><span class="mpill f">G 46g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">☕</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Ovo mexido + pão integral + café com aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">☕ Café 150ml + leite de aveia 200ml<br>🥚 1 ovo mexido<br>🍞 2 fatias pão integral<br>🍑 Fruta de verão a gosto</div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🥤</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Whey morango + aveia + banana</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥤 2 scoops whey morango + 200ml leite de aveia + 1 banana</div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 30g</span><span class="mf">G 4g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🌾</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Quinoa con pollo y verduras</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🍗 Pechuga (sobra da sexta) em tiras<br>🌾 Quinoa com pimentão + cebola + abobrinha + cenoura<br>🥗 Alface + tomate + azeite + limão</div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 44g</span><span class="mf">G 10g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🍇</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Opção A: uvas + queijo · Opção B: pão + cottage</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items"><strong>A:</strong> 🍇 Punhado de uvas + 1 fatia queijo fresco<br><strong>B:</strong> 🍞 1 fatia pão integral + 3 col. cottage</div><div class="meal-macros"><span class="mp">P 8g</span><span class="mc">C 20g</span><span class="mf">G 7g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🫓</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Wraps de pollo con aguacate</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🫓 Tortitas de trigo integral (36g)<br>🍗 107g peito grelhado frio em tiras<br>🥬 Espinacas frescas<br>🥑 27g abacate<br>🧀 Queijo fresco desnatado para untar</div><div class="meal-macros"><span class="mp">P 26g</span><span class="mc">C 32g</span><span class="mf">G 14g</span></div></div>
-      </div>
-    </div>
-
-    <!-- DOMINGO -->
-    <div class="screen" id="dom">
-      <div class="day-head"><div class="day-title">Domingo 🥘</div></div>
-      <div class="mbar"><span class="mpill k">~1.545 kcal</span><span class="mpill p">P 110g</span><span class="mpill c">C 152g</span><span class="mpill f">G 44g</span></div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-dej">☕</div><div class="meal-info"><div class="meal-time">9h · Desjejum</div><div class="meal-name">Ovo mexido + pão integral + café com aveia</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">☕ Café 150ml + leite de aveia 200ml<br>🥚 1 ovo mexido<br>🍞 2 fatias pão integral<br>🍑 Fruta de verão</div><div class="meal-macros"><span class="mp">P 22g</span><span class="mc">C 40g</span><span class="mf">G 9g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-col">🥤</div><div class="meal-info"><div class="meal-time">11h30 · Colação</div><div class="meal-name">Whey morango + aveia + banana</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥤 2 scoops whey morango + 200ml leite de aveia + 1 banana<br><em>Enquanto começas o prep da semana!</em></div><div class="meal-macros"><span class="mp">P 30g</span><span class="mc">C 30g</span><span class="mf">G 4g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-alm">🥩</div><div class="meal-info"><div class="meal-time">14h30 · Almoço</div><div class="meal-name">Costelinha à galega na panela de pressão</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🥩 Costelinha (alecrim + tomilho + alho + azeite + 20min pressão)<br>🥔 Batata cozida ou assada<br>🫕 Pisto de verduras (sobra da semana)<br><em>🇪🇸 Toque galego: pimentón de la vera + alho</em><div class="tip">💡 Domingo = prep day: feijão preto + frango cozido p/ a semana!</div></div><div class="meal-macros"><span class="mp">P 32g</span><span class="mc">C 36g</span><span class="mf">G 14g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-lan">🫙</div><div class="meal-info"><div class="meal-time">17h · Lanche</div><div class="meal-name">Opção A: Alpro + fruta · Opção B: pão micro + cottage</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items"><strong>A:</strong> 🫙 Alpro 200g + fruta de verão<br><strong>B:</strong> 🍞 Pan en el microondas (receita ficheiro — 2min!) + 3 col. cottage</div><div class="meal-macros"><span class="mp">P 10g</span><span class="mc">C 20g</span><span class="mf">G 6g</span></div></div>
-      </div>
-      <div class="meal">
-        <div class="meal-head" onclick="togM(this)"><div class="meal-icon ic-jan">🐟</div><div class="meal-info"><div class="meal-time">20h · Jantar</div><div class="meal-name">Salada de salmão fumado, quinoa e pepino</div></div><div class="meal-chevron">›</div></div>
-        <div class="meal-body"><div class="meal-items">🐟 80g salmão fumado<br>🌾 60g quinoa cozida fria<br>🥗 Rúcula + canónigos + tomate cherry + pepino + pimento assado<br>🍋 Azeite + vinagre de arroz + mostarda</div><div class="meal-macros"><span class="mp">P 24g</span><span class="mc">C 32g</span><span class="mf">G 12g</span></div></div>
-      </div>
-    </div>
-
-    <!-- LISTA MERCADO -->
+    <!-- COMPRA -->
     <div class="screen" id="shop">
-      <div class="day-head"><div class="day-title">🛒 Lista de mercado</div></div>
-      <p style="font-size:13px;color:#888;margin-bottom:12px">Segunda-feira · Mercadona + Gadis Arteixo</p>
-      <div class="shop-note">💡 O que tens em casa: azeite, sal, pimenta, orégano, cacau, canela, shoyu, vinagre, mostarda, especiarias.</div>
+      <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">🛒 Lista de compra</div>
+      <p style="font-size:13px;color:var(--t3);margin-bottom:10px">Lunes · 13h pausa · Mercadona + Gadis Arteixo</p>
+      <div class="shop-note">💡 Ya tienes en casa: AOVE, sal, especias, vinagre, mostaza, garbanzos congelados. Solo compra lo de aquí.</div>
 
-      <div class="shop-section">Por categoria</div>
-
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🥩 Proteínas animais <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Peito de frango</span></div><span class="shop-qty">~800g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Atum ao natural (latas)</span></div><span class="shop-qty">3 latas</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Salmão fumado</span></div><span class="shop-qty">1 pkt 100g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Costelinha de porco</span></div><span class="shop-qty">~400g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Ovos</span></div><span class="shop-qty">1 dúzia</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Mezzelune Garofalo boletus y trufa</span></div><span class="shop-qty">230g</span></div>
+      <div class="ss">Carnes y embutidos</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🥩 Carnes y embutidos <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">York / pavo cocido (desayuno lunes y viernes)</span></div><span class="si-q">~200g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Jamón serrano (desayuno martes, jueves y sábado)</span></div><span class="si-q">~220g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pavo fiambre (almuerzo martes, jueves y sábado)</span></div><span class="si-q">~200g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Lomo fiambre (almuerzo lunes y viernes)</span></div><span class="si-q">~80g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Bacon (comida martes)</span></div><span class="si-q">35g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Muslo pollo sin piel (comida lunes)</span></div><span class="si-q">160g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Contramuslo pollo sin piel (cena martes)</span></div><span class="si-q">110g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pechuga pollo (comida jueves)</span></div><span class="si-q">110g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Burguer de pollo (cena sábado)</span></div><span class="si-q">110g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Chuletas de pavo (comida viernes)</span></div><span class="si-q">160g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Lomo de cerdo (comida sábado)</span></div><span class="si-q">210g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Ternera magra (cena lunes)</span></div><span class="si-q">170g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Solomillo de cerdo (cena viernes)</span></div><span class="si-q">170g</span></div>
         </div>
       </div>
 
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🌱 Proteínas vegetais <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Feijão preto seco</span></div><span class="shop-qty">250g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Lentilha vermelha</span></div><span class="shop-qty">200g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Grão-de-bico cozido (tarro)</span></div><span class="shop-qty">1 × 400g</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Quinoa</span></div><span class="shop-qty">300g</span></div>
+      <div class="ss">Pescado y marisco</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🐟 Pescado y marisco <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Merluza filetes (comida miércoles)</span></div><span class="si-q">180g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Lenguado filetes (cena miércoles)</span></div><span class="si-q">125g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Langostinos congelados con piel (comida domingo) — pesar carne limpia</span></div><span class="si-q">~270g con piel</span></div>
         </div>
       </div>
 
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🥛 Lácteos e vegetais refrigerados <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Leite de aveia Alpro</span></div><span class="shop-qty">3 × 1L</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Iogurte Alpro Natural Aveia</span></div><span class="shop-qty">4 potes</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Cottage cheese</span></div><span class="shop-qty">1 emb.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Creme de ricota</span></div><span class="shop-qty">1 emb.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Queijo fresco desnatado p/ untar</span></div><span class="shop-qty">1 emb.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Parmesão (lascas)</span></div><span class="shop-qty">pequeno</span></div>
+      <div class="ss">Huevos y lácteos</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🥚 Huevos y lácteos <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Huevos L</span></div><span class="si-q">1 docena</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Bebida de avena Alpro (miércoles, viernes, domingo desayuno)</span></div><span class="si-q">1–2 × 1L</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso en lonchas (desayuno lunes y viernes)</span></div><span class="si-q">1 pkt</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso fresco entero (desayuno miércoles y domingo)</span></div><span class="si-q">~150g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso light (almuerzo miércoles y domingo)</span></div><span class="si-q">~50g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Yogur desnatado 0% (merienda martes, jueves y sábado)</span></div><span class="si-q">3 uds</span></div>
         </div>
       </div>
 
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🥦 Vegetais e verduras <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Tomate cherry</span></div><span class="shop-qty">2 pkt</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Tomate normal</span></div><span class="shop-qty">3-4 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pepino</span></div><span class="shop-qty">3 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Cenoura</span></div><span class="shop-qty">1 saco</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Abobrinha (calabacín)</span></div><span class="shop-qty">2 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pimentão vermelho</span></div><span class="shop-qty">2 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pimentão amarelo</span></div><span class="shop-qty">2 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pimentão verde</span></div><span class="shop-qty">1 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Cebola</span></div><span class="shop-qty">1 saco</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Alho</span></div><span class="shop-qty">1 cabeça</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Brócolis</span></div><span class="shop-qty">1 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Alface iceberg</span></div><span class="shop-qty">1 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Rúcula + canónigos (bolsa mista)</span></div><span class="shop-qty">2 bolsas</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Espinacas frescas</span></div><span class="shop-qty">1 bolsa</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Berinjela</span></div><span class="shop-qty">1 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Aipo (apio)</span></div><span class="shop-qty">1 tallo</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Puerro</span></div><span class="shop-qty">1 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Abacate</span></div><span class="shop-qty">2 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Batata</span></div><span class="shop-qty">4 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pimento asado (tarro)</span></div><span class="shop-qty">1 tarro</span></div>
+      <div class="ss">Legumbres</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🫘 Legumbres <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Garbanzos secos (cocer en olla a presión y congelar en porciones de 240g)</span></div><span class="si-q">500g — mensual</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Guisantes frescos o congelados (comida sábado)</span></div><span class="si-q">200g</span></div>
         </div>
       </div>
 
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🍑 Frutas de verão <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pêssego ou nectarina</span></div><span class="shop-qty">5-6 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Banana</span></div><span class="shop-qty">~7 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Uvas (brancas ou rosadas)</span></div><span class="shop-qty">1 cacho</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Ameixa fresca</span></div><span class="shop-qty">3-4 unid.</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Mirtilos ou morangos</span></div><span class="shop-qty">1 caixa</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Limão</span></div><span class="shop-qty">3 unid.</span></div>
+      <div class="ss">Verduras y hortalizas</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🥦 Verduras <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Patata</span></div><span class="si-q">~1 kg</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Cebolla</span></div><span class="si-q">1 bolsa</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Lechuga</span></div><span class="si-q">1 ud</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Canónigos (cena viernes y domingo)</span></div><span class="si-q">1 bolsa</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Zanahoria</span></div><span class="si-q">1 bolsa</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Tomate</span></div><span class="si-q">3–4 uds</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pepino (comida jueves)</span></div><span class="si-q">1 ud grande</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Espárragos verdes / trigueros (cena jueves + comida jueves)</span></div><span class="si-q">2 manojos</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Champiñones (cena jueves + cena sábado)</span></div><span class="si-q">~300g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pimientos (cena miércoles)</span></div><span class="si-q">2–3 uds</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Calabacín (cena sábado)</span></div><span class="si-q">1 ud</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Remolacha (cena viernes)</span></div><span class="si-q">1 pkt</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Verduras libres variadas (brócoli, judías…)</span></div><span class="si-q">~600g</span></div>
         </div>
       </div>
 
-      <div class="shop-cat">
-        <div class="shop-cat-head" onclick="togCat(this)">🌾 Cereais, pão e secos <span class="shop-cat-arrow">›</span></div>
-        <div class="shop-cat-body">
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pão de forma integral</span></div><span class="shop-qty">1 pkt</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Tortitas de trigo integral</span></div><span class="shop-qty">1 pkt</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Pasta de amendoim natural</span></div><span class="shop-qty">1 frasco</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Amêndoas sem sal</span></div><span class="shop-qty">1 saco pequeno</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Arroz integral (verificar em casa)</span></div><span class="shop-qty">se precisar</span></div>
-          <div class="shop-item" onclick="togCheck(this)"><div class="shop-item-left"><div class="check-box"></div><span class="shop-item-name">Cuscuz marroquino (verificar)</span></div><span class="shop-qty">se precisar</span></div>
+      <div class="ss">Frutas</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🍑 Frutas de temporada <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Fruta verano (melocotón, nectarina, ciruela, uvas)</span></div><span class="si-q">~12 piezas</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Limón</span></div><span class="si-q">2 uds</span></div>
         </div>
       </div>
 
-      <div class="shop-section">Por dia</div>
+      <div class="ss">Cereales y pan</div>
+      <div class="sc">
+        <div class="sc-head" onclick="togC(this)">🍞 Cereales y pan <span class="ca">›</span></div>
+        <div class="sc-body">
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pan (rebanadas 20–40g)</span></div><span class="si-q">1 pkt</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Arroz (comida domingo)</span></div><span class="si-q">comprobar en casa</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Maíz en lata</span></div><span class="si-q">1 lata</span></div>
+        </div>
+      </div>
 
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Segunda + prep batch</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🥚 Ovos · 🍞 Pão integral · 🥛 Leite de aveia · 🍑 Pêssego · 🍌 Banana · 🍗 Frango (dobro) · 🥦 Brócolis · 🥕 Cenoura · 🫑 Pimentão · 🧅 Cebola · 🥗 Alface · 🍅 Tomate · 🫘 Grão-de-bico · 🥒 Pepino · 🫙 Alpro iogurte</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Terça 🌱 vegano</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🌾 Flocão · 🥛 Leite aveia · 🍌 Banana (2) · 🍫 Cacau · 🫘 Feijão preto (prep domingo) · 🌾 Cuscuz marroquino · 🥒 Pepino · 🍅 Tomate cherry · 🥑 Abacate · 🍞 Pão integral · 🫘 Lentilha + quinoa</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Quarta</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🥚 Ovos · 🍞 Pão · 🥛 Leite aveia · 🍇 Uvas · 🍌 Banana · 🍗 Frango xadrez (sobra seg.) · 🫕 Pisto (batch) · 🐟 Atum (lata) · 🥒 Pepino · 🥕 Cenoura · 🍅 Tomate · 🥗 Alface</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Quinta 🌱 vegano</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🌽 Flocão · 🍅 Tomate · 🥑 Abacate · 🥛 Leite aveia · 🍑 Pêssego · 🫙 Alpro iogurte · 🫘 Feijão preto (sobra terça) · 🍚 Arroz integral · 🫕 Pisto (batch) · 🍞 Pão integral · 🥣 Crema calabacín (prep em batch)</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Sexta</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🥚 Ovos · 🍞 Pão · 🥛 Leite aveia · 🍌 Banana · 🍑 Pêssego · 🍗 Frango (2 pechugas — guarda 1 p/ sáb.) · 🥔 Batata · 🥗 Alface · 🍅 Tomate · 🫙 Alpro ou cottage · 🍝 Mezzelune Garofalo · 🧀 Parmesão · 🥗 Rúcula</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Sábado</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🥚 Ovos · 🍞 Pão · 🥛 Leite aveia · 🍌 Banana · 🍑 Fruta · 🍗 Frango (sobra sexta) · 🌾 Quinoa · 🥑 Abacate · 🫓 Tortitas integral · 🧀 Queijo fresco · 🥬 Espinacas · 🍇 Uvas · 🥗 Alface + tomate</div></div>
-      <div class="day-shop"><div class="day-shop-head" onclick="togDay(this)"><div class="day-shop-title">Domingo + prep semana</div><span style="color:#999;font-size:14px">›</span></div><div class="day-shop-body">🥚 Ovos · 🍞 Pão · 🥛 Leite aveia · 🍌 Banana · 🍑 Fruta · 🥩 Costelinha porco · 🥔 Batata · 🐟 Salmão fumado · 🌾 Quinoa · 🥒 Pepino · 🍅 Tomate cherry · 🫙 Alpro ou cottage · 🔁 Prep: feijão preto + frango p/ semana</div></div>
-
-      <button class="reset-btn" onclick="resetChecks()">🗑 Limpar lista marcada</button>
+      <button class="reset-btn" onclick="resetAll()">🗑 Borrar marcados</button>
     </div>
 
   </div>
 </div>
 
 <script>
-function showDay(id, el) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+const DAYS = [
+  {
+    name:'Día 1', week:'Lunes',
+    cook:true, prep:false,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con york y queso',
+       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 100g york <span class="rc">(1P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🍗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Muslo de pollo con patata y verduras',
+       items:`🍗 150g muslo pollo <span class="rc">(1,5P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Después pon patatas a hervir para martes y jueves.</div>`,mac:'p15 hc2 g15'},
+      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Ternera con patata al micro',
+       items:`🥩 160g ternera <span class="rc">(1P · 1G)</span><br>🥔 130g patata al micro con especias <span class="rc">(1HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><br>🥗 Ensalada libre`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 2', week:'Martes',
+    cook:false, prep:true,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
+       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🫘',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Garbanzos con verduras y bacon',
+       items:`🫘 240g garbanzos cocidos (descongelados) <span class="rc">(1HC · 1P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥓 30g bacon <span class="rc">(0,5P · 0,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Saca los garbanzos del congelador la noche del lunes.</div>`,mac:'p15 hc2 g1'},
+      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
+       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🍗',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Contramuslo de pollo con ensalada',
+       items:`🍗 100g contramuslo pollo sin piel <span class="rc">(1P)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 3', week:'Miércoles',
+    cook:true, prep:false,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',
+       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena que equivale a 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🐟',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Merluza con patata y verduras',
+       items:`🐟 170g merluza <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Aprovecha y prepara también el lenguado de la cena.</div>`,mac:'p15 hc2 g15'},
+      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🐟',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Lenguado con pimientos y cebolla',
+       items:`🐟 115g lenguado <span class="rc">(1P)</span><br>🫑 150g pimientos <span class="rc">(0,5HC)</span><br>🧅 120g cebolla <span class="rc">(0,5HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 4', week:'Jueves',
+    cook:false, prep:true,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
+       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🥗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Ensalada de patata con pollo y huevo',
+       items:`🥔 130g patata <span class="rc">(1HC)</span><br>🥒 175g pepino <span class="rc">(0,25HC)</span><br>🌿 125g espárragos <span class="rc">(0,25HC)</span><br>🌽 30g maíz <span class="rc">(0,25HC)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span><br>🥚 1 huevo L <span class="rc">(0,5P · 0,5G)</span><br>🍗 100g pechuga pollo <span class="rc">(1P)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Comida pre-preparada — ensalada montada en frío con la patata del lunes.</div>`,mac:'p15 hc2 g1'},
+      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
+       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span><div class="tbox">💪 Jueves: cansancio acumulado. Merienda lista, sin pensar.</div>`,mac:'hc05'},
+      {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Revuelto de huevos con trigueros y champis',
+       items:`🥚 2 huevos L <span class="rc">(1P · 1G)</span><br>🌿 180g trigueros <span class="rc">(0,5HC)</span><br>🍄 150g champiñones <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 5', week:'Viernes',
+    cook:true, prep:false,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan, york y queso',
+       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🥩 50g york <span class="rc">(0,5P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🦃',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Chuletas de pavo con patata y verduras',
+       items:`🦃 150g chuletas pavo <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Si quieres, prepara también la comida del sábado (lomo + guisantes).</div>`,mac:'p15 hc2 g15'},
+      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Solomillo de cerdo con ensalada',
+       items:`🥩 160g solomillo cerdo <span class="rc">(1P · 1G)</span><br>🥗 125g canónigos <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 125g tomate <span class="rc">(0,25HC)</span> + 50g remolacha <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 6', week:'Sábado',
+    cook:false, prep:true,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
+       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🥩',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Lomo de cerdo con guisantes y cebolla',
+       items:`🥩 200g lomo de cerdo <span class="rc">(1,5P · 1G)</span><br>🫛 180g guisantes <span class="rc">(1,5HC)</span><br>🧅 120g cebolla pochada <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><div class="tbox">🧊 Comida pre-preparada del viernes — solo calentar.</div>`,mac:'p15 hc2 g15'},
+      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
+       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🍔',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Burguer de pollo con salteado de verduras',
+       items:`🍔 100g burguer pollo <span class="rc">(1P)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 75g champiñones <span class="rc">(0,25HC)</span> + 150g calabacín <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  },
+  {
+    name:'Día 7', week:'Domingo',
+    cook:false, prep:true,
+    meals:[
+      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',
+       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+      {icon:'🍤',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Langostinos con arroz y verduras',
+       items:`🦐 170g langostinos (carne limpia, sin piel ni cabeza) <span class="rc">(1,5P)</span><br>🍚 60g arroz en crudo <span class="rc">(2HC)</span><br>🥦 150g verduras libres<br>🫒 15g AOVE <span class="rc">(1,5G)</span><div class="wbox">⚠️ Langostinos con piel congelados: descongela, descasca y pesa solo la carne limpia. 170g carne ≈ 270g con piel. Confirma con David si la ración es sobre carne limpia.</div>`,mac:'p15 hc2 g15'},
+      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
+       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+      {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Tortilla con ensalada',
+       items:`🥚 2 huevos L — tortilla <span class="rc">(1P · 1G)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 125g espárragos <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+    ]
+  }
+];
+
+let cur = 0;
+
+function macHTML(mac) {
+  const parts = mac.split(' ');
+  const map = {p1:'P 1',p15:'P 1,5',p05:'P 0,5',hc1:'HC 1',hc2:'HC 2',hc05:'HC 0,5',g15:'G 1,5',g1:'G 1',g05:'G 0,5'};
+  const cls = {p1:'p',p15:'p',p05:'p',hc1:'hc',hc2:'hc',hc05:'hc',g15:'g',g1:'g',g05:'g'};
+  return parts.filter(p=>map[p]).map(p=>`<span class="mm ${cls[p]}">${map[p]}</span>`).join('');
+}
+
+function renderDay() {
+  const d = DAYS[cur];
+  document.getElementById('day-title').textContent = d.name;
+  document.getElementById('day-sub').textContent = d.week;
+  const badges = document.getElementById('day-badges');
+  let b = `<span class="rp tot">12,5 rac.</span><span class="rp p">P 4</span><span class="rp hc">HC 5</span><span class="rp g">G 3,5</span>`;
+  if(d.cook) b += `<span class="rp cook">🍳 Cocinas hoy</span>`;
+  if(d.prep) b += `<span class="rp prep">🧊 Pre-preparado</span>`;
+  badges.innerHTML = b;
+  document.getElementById('meal-container').innerHTML = d.meals.map(m=>`
+    <div class="meal">
+      <div class="meal-head" onclick="togM(this)">
+        <div class="meal-icon ${m.cls}">${m.icon}</div>
+        <div class="meal-info">
+          <div class="meal-label">${m.label}</div>
+          <div class="meal-name">${m.name}</div>
+        </div>
+        <div class="chevron">›</div>
+      </div>
+      <div class="meal-body">
+        <div class="items">${m.items}</div>
+        <div class="macros">${macHTML(m.mac)}</div>
+      </div>
+    </div>`).join('');
+}
+
+function changeDay(dir) {
+  cur = (cur+dir+7)%7;
+  renderDay();
+  document.getElementById('meal-container').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function showTab(id) {
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('visible');
-  el.classList.add('active');
-  el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  const idx={days:0,tips:1,shop:2};
+  document.querySelectorAll('.tab')[idx[id]].classList.add('active');
 }
-function togM(head) {
-  const body = head.nextElementSibling;
-  const ch = head.querySelector('.meal-chevron');
-  body.classList.toggle('open');
-  ch.classList.toggle('open');
+function togM(head){
+  head.nextElementSibling.classList.toggle('open');
+  head.querySelector('.chevron').classList.toggle('open');
 }
-function togCat(head) {
-  const body = head.nextElementSibling;
-  const arr = head.querySelector('.shop-cat-arrow');
-  body.classList.toggle('open');
-  arr.classList.toggle('open');
+function togC(head){
+  head.nextElementSibling.classList.toggle('open');
+  head.querySelector('.ca').classList.toggle('open');
 }
-function togDay(head) {
-  const body = head.nextElementSibling;
-  body.classList.toggle('open');
+function togSI(item){
+  item.querySelector('.cb').classList.toggle('checked');
+  item.querySelector('.si-n').classList.toggle('checked');
 }
-function togCheck(item) {
-  const box = item.querySelector('.check-box');
-  const name = item.querySelector('.shop-item-name');
-  box.classList.toggle('checked');
-  name.classList.toggle('checked');
+function resetAll(){
+  document.querySelectorAll('.cb').forEach(b=>b.classList.remove('checked'));
+  document.querySelectorAll('.si-n').forEach(n=>n.classList.remove('checked'));
 }
-function resetChecks() {
-  document.querySelectorAll('.check-box').forEach(b => b.classList.remove('checked'));
-  document.querySelectorAll('.shop-item-name').forEach(n => n.classList.remove('checked'));
-}
+renderDay();
 </script>
 </body>
 </html>
