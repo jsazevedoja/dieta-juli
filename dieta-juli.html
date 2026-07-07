@@ -7,15 +7,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Dieta Juli">
 <meta name="theme-color" content="#1a1a1a">
-<link rel="icon" type="image/png" href="Ju Diet.png">
-<link rel="apple-touch-icon" href="Ju Diet.png">
 <title>Dieta · Juli</title>
 <style>
 :root{--bg:#f5f4f0;--card:#fff;--green:#2d7a5f;--gl:#e6f4ee;--amber:#b8720f;--al:#fdf2e0;--coral:#b83a22;--cl:#fceee9;--text:#1a1a1a;--t2:#4a4a4a;--t3:#909090;--border:#e5e1d8;--r:14px;--sh:0 1px 8px rgba(0,0,0,.08)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Text',sans-serif;color:var(--text);overscroll-behavior:none}
 .app{display:flex;flex-direction:column;height:100dvh;max-width:430px;margin:0 auto}
-.header{padding:env(safe-area-inset-top,12px) 24px 0;background:var(--bg)}
+.header{padding:env(safe-area-inset-top,12px) 20px 0;background:var(--bg)}
 .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;border-bottom:1px solid var(--border)}
 .header h1{font-size:21px;font-weight:700;letter-spacing:-.4px}
 .header h1 span{color:var(--green)}
@@ -27,9 +25,11 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
 .tab.active{background:var(--text);color:#fff;border-color:var(--text)}
 .tab.tips{border-color:var(--amber);color:var(--amber)}
 .tab.tips.active{background:var(--amber);color:#fff}
+.tab.peso{border-color:var(--green);color:var(--green)}
+.tab.peso.active{background:var(--green);color:#fff}
 .tab.shop{border-color:#7c3aed;color:#7c3aed}
 .tab.shop.active{background:#7c3aed;color:#fff}
-.content{flex:1;overflow-y:auto;padding:12px 20px calc(env(safe-area-inset-bottom,0px)+14px)}
+.content{flex:1;overflow-y:auto;padding:12px 20px calc(env(safe-area-inset-bottom,0px)+20px)}
 .screen{display:none}.screen.visible{display:block}
 .day-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .nav-btn{width:36px;height:36px;border-radius:10px;background:var(--card);border:1.5px solid var(--border);font-size:18px;color:var(--t2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sh)}
@@ -110,6 +110,7 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
     <div class="tabs">
       <div class="tab active" onclick="showTab('days')">📅 Menú</div>
       <div class="tab tips" onclick="showTab('tips')">💡 Organización</div>
+      <div class="tab peso" onclick="showTab('peso')">⚖️ Pesos</div>
       <div class="tab shop" onclick="showTab('shop')">🛒 Compra</div>
     </div>
   </div>
@@ -237,6 +238,126 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
             <strong>2.</strong> Cenas rápidas (&lt;10 min): revuelto de huevos, tortilla, lenguado a la plancha, burguer de pollo.<br>
             <strong>3.</strong> Si algo salió mal hoy — retomas mañana. Sin drama.<br><br>
             <em>"Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando." — David Gracia</em>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PESOS -->
+    <div class="screen" id="peso">
+      <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">⚖️ Guía de pesos</div>
+      <div style="font-size:13px;color:var(--t3);margin-bottom:14px">Lo que necesitas saber para el día a día</div>
+
+      <div class="ts">
+        <div class="ts-title">Reglas básicas</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">📏</div><div class="tc-title">Siempre pesar en crudo</div></div>
+          <div class="tc-body">Carne, pescado, arroz, patata, verduras — siempre en crudo.<br><strong>Excepción: legumbres de bote o cocidas en casa</strong> → pesar ya cocidas y escurridas.<br><br><strong>El AOVE es crítico.</strong> Compra cucharas medidoras de 5–10–15g. La diferencia entre 5g y 15g son 100 kcal que no ves.</div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">Crudo → Asado</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🫑</div><div class="tc-title">Verduras asadas</div></div>
+          <div class="tc-body">
+            Las verduras pierden agua al asarse. Si el plan dice 150g, pesas 150g en crudo — lo que queda asado es tu ración.<br><br>
+            <strong>Calabacín:</strong> 150g crudo → ~90–100g asado<br>
+            <strong>Pimientos:</strong> 150g crudo → ~100–110g asado<br>
+            <strong>Zanahoria:</strong> 150g crudo → ~120g asado<br>
+            <strong>Berenjena:</strong> 150g crudo → ~80–90g asado<br>
+            <strong>Cebolla:</strong> 150g crudo → ~100g asado<br><br>
+            <em>Siempre pesa en crudo — no hace falta pesar después de asar.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">Crudo → Cocido</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🍚</div><div class="tc-title">Arroz y cereales</div></div>
+          <div class="tc-body">
+            <strong>Arroz blanco:</strong> 60g crudo → ~180g cocido<br>
+            <strong>Arroz integral:</strong> 60g crudo → ~150g cocido<br>
+            <strong>Quinoa:</strong> 60g crudo → ~150g cocido<br><br>
+            <strong>Si cocinas para dos (regla de tres de David):</strong><br>
+            <em>150g crudo → 450g cocido. Tu ración de 60g crudo = 60×450÷150 = 180g cocido.</em>
+          </div>
+        </div>
+        <div class="tc" style="margin-top:0">
+          <div class="tc-head"><div class="tc-icon">🥔</div><div class="tc-title">Patata</div></div>
+          <div class="tc-body">
+            <strong>Patata hervida:</strong> 130g crudo → ~125g cocida (pierde poco)<br>
+            <strong>Patata al micro:</strong> 130g crudo → ~100–110g (pierde algo de agua)<br>
+            <strong>Patata asada:</strong> 130g crudo → ~90–100g<br><br>
+            <em>Pesa siempre en crudo — es lo más fiable.</em>
+          </div>
+        </div>
+        <div class="tc" style="margin-top:0">
+          <div class="tc-head"><div class="tc-icon">🍗</div><div class="tc-title">Carnes y pescado</div></div>
+          <div class="tc-body">
+            <strong>Pollo a la plancha:</strong> 150g crudo → ~110–120g cocinado<br>
+            <strong>Ternera a la plancha:</strong> 160g crudo → ~120–130g cocinada<br>
+            <strong>Cerdo a la plancha:</strong> 160g crudo → ~120g cocinado<br>
+            <strong>Merluza al horno:</strong> 170g crudo → ~140g cocinada<br>
+            <strong>Lenguado a la plancha:</strong> 115g crudo → ~90g cocinado<br><br>
+            <em>Pesa siempre en crudo. El peso cocinado es solo referencia visual.</em>
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">Casos especiales</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🫘</div><div class="tc-title">Garbanzos cocidos en casa</div></div>
+          <div class="tc-body">
+            Los haces en olla a presión y congelas en porciones de <strong>240g cocidos y escurridos</strong> — exactamente igual que los de bote.<br><br>
+            <strong>Rendimiento:</strong> 100g de garbanzos secos → ~240–260g cocidos.<br>
+            Así que 100g secos ≈ 1 ración tuya.
+          </div>
+        </div>
+        <div class="tc" style="margin-top:0">
+          <div class="tc-head"><div class="tc-icon">🦐</div><div class="tc-title">Langostinos con piel congelados</div></div>
+          <div class="tc-body">
+            Tu ración es <strong>170g de carne limpia</strong> (sin piel ni cabeza).<br><br>
+            Para tener 170g de carne necesitas comprar ~<strong>270g con piel</strong>.<br><br>
+            Proceso: descongela en nevera → descasca → pesa la carne limpia → cocina.<br><br>
+            <em>Confirma con David si la ración es sobre carne limpia o peso total.</em>
+          </div>
+        </div>
+        <div class="tc" style="margin-top:0">
+          <div class="tc-head"><div class="tc-icon">🫒</div><div class="tc-title">AOVE — el más importante</div></div>
+          <div class="tc-body">
+            <strong>5g AOVE</strong> = 1 cucharita rasa = 45 kcal<br>
+            <strong>10g AOVE</strong> = 2 cucharitas = 90 kcal<br>
+            <strong>15g AOVE</strong> = 1 cucharada sopera = 135 kcal<br><br>
+            La diferencia entre 5g y 15g son <strong>90 kcal</strong> que no ves ni notas — pero suman. Usa siempre cucharas medidoras.
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">Cuando sales del plan</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🧠</div><div class="tc-title">Sin drama</div></div>
+          <div class="tc-body">
+            Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando.<br><br>
+            <strong>Si saliste del plan:</strong> retomas en la siguiente comida. No en el día siguiente, no el lunes — en la siguiente comida.<br><br>
+            <strong>Restaurante:</strong> prioriza proteína, pide salsas aparte, elige verdura de acompañamiento, fruta de postre. Si es una ocasión especial — disfrútalo sin culpa.
+          </div>
+        </div>
+      </div>
+
+      <div class="ts">
+        <div class="ts-title">Medidas caseras útiles</div>
+        <div class="tc">
+          <div class="tc-head"><div class="tc-icon">🏠</div><div class="tc-title">Crea tus referencias</div></div>
+          <div class="tc-body">
+            Después de 2–3 semanas pesando, anota tus equivalencias caseras:<br><br>
+            <em>"130g patata = patata mediana de mi cocina"</em><br>
+            <em>"60g arroz = X cucharadas de mi cuchara"</em><br>
+            <em>"150g calabacín = medio calabacín pequeño"</em><br><br>
+            Con el tiempo dejas de pesar todo sin perder precisión. Pero empieza pesando — el ojo se educa con práctica.
           </div>
         </div>
       </div>
@@ -505,7 +626,7 @@ function showTab(id) {
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('visible'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('visible');
-  const idx={days:0,tips:1,shop:2};
+  const idx={days:0,tips:1,peso:2,shop:3};
   document.querySelectorAll('.tab')[idx[id]].classList.add('active');
 }
 function togM(head){
