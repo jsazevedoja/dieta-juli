@@ -8,7 +8,8 @@
 <meta name="apple-mobile-web-app-title" content="Dieta Juli">
 <meta name="theme-color" content="#1a1a1a">
 <link rel="icon" type="image/png" href="Ju%20Diet.png">
-<link rel="apple-touch-icon" href="Ju%20Diet.png">  
+<link rel="apple-touch-icon" href="Ju%20Diet.png">
+<link rel="shortcut icon" href="Ju%20Diet.png">
 <title>Dieta · Juli</title>
 <style>
 :root{--bg:#f5f4f0;--card:#fff;--green:#2d7a5f;--gl:#e6f4ee;--amber:#b8720f;--al:#fdf2e0;--coral:#b83a22;--cl:#fceee9;--text:#1a1a1a;--t2:#4a4a4a;--t3:#909090;--border:#e5e1d8;--r:14px;--sh:0 1px 8px rgba(0,0,0,.08)}
@@ -20,7 +21,7 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
 .header h1{font-size:21px;font-weight:700;letter-spacing:-.4px}
 .header h1 span{color:var(--green)}
 .pill{font-size:11px;font-weight:600;background:var(--green);color:#fff;border-radius:20px;padding:4px 11px}
-.tabs-wrap{overflow-x:auto;scrollbar-width:none;padding:10px 28px 0;background:var(--bg)}
+.tabs-wrap{overflow-x:auto;scrollbar-width:none;padding:10px 20px 0;background:var(--bg)}
 .tabs-wrap::-webkit-scrollbar{display:none}
 .tabs{display:flex;gap:5px}
 .tab{flex-shrink:0;padding:6px 13px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1.5px solid var(--border);background:var(--card);color:var(--t2);transition:all .15s;white-space:nowrap}
@@ -31,7 +32,7 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
 .tab.peso.active{background:var(--green);color:#fff}
 .tab.shop{border-color:#7c3aed;color:#7c3aed}
 .tab.shop.active{background:#7c3aed;color:#fff}
-.content{flex:1;overflow-y:auto;padding:12px 28px calc(env(safe-area-inset-bottom,0px)+28px)
+.content{flex:1;overflow-y:auto;padding:12px 24px calc(env(safe-area-inset-bottom,0px)+24px)}
 .screen{display:none}.screen.visible{display:block}
 .day-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .nav-btn{width:36px;height:36px;border-radius:10px;background:var(--card);border:1.5px solid var(--border);font-size:18px;color:var(--t2);cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:var(--sh)}
@@ -136,48 +137,42 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
     <!-- ORGANIZACIÓN -->
     <div class="screen" id="tips">
       <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">💡 Organización</div>
-      <div style="font-size:13px;color:var(--t3);margin-bottom:14px">Cocinas lunes, miércoles y viernes. Sin fin de semana.</div>
-
+      <div style="font-size:13px;color:var(--t3);margin-bottom:14px">Sin cocinar el fin de semana · Compra el lunes a las 13h</div>
       <div class="ts">
         <div class="ts-title">🗓 Lunes — el día clave</div>
-
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🛒</div><div class="tc-title">13h — Pausa del trabajo: compra rápida</div></div>
-          <div class="tc-body">Trabajas desde casa — aprovecha la pausa del mediodía. <strong>Ve con la lista hecha (pestaña 🛒) y la tripa llena.</strong> Compra exactamente lo de la lista, sin improvisar. Tarda ~20–25 min. Llegas, cocinas tu comida del día 1 para ti y Jesús, y ya estás.</div>
+          <div class="tc-body">Trabajas desde casa — aprovecha la pausa del mediodía. <strong>Ve con la lista hecha (pestaña 🛒) y la tripa llena.</strong> Compra exactamente lo de la lista, sin improvisar. Tarda ~20–25 min.</div>
         </div>
-
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🍳</div><div class="tc-title">Después de comer — mini prep de 15 min</div></div>
           <div class="tc-body">
             <div class="tl">
-              <div class="tl-item"><div class="tl-time">Mientras recoges la cocina</div><div class="tl-desc">Pon las patatas del martes y jueves a hervir (ya que tienes el fuego encendido). Son ~260g en total.</div></div>
-              <div class="tl-item"><div class="tl-time">10 min después</div><div class="tl-desc">Patatas listas → tupper en nevera. Divide el fiambre (york, serrano, pavo) en bolsitas para 3–4 días. Lava y seca la lechuga/canónigos — tupper con papel de cocina, duran 4–5 días.</div></div>
-              <div class="tl-item"><div class="tl-time">Opcional +5 min</div><div class="tl-desc">Pesa y congela las raciones de carne en bolsitas individuales. La noche anterior sacas la del día siguiente a la nevera. Sin pesar a mitad de semana.</div></div>
+              <div class="tl-item"><div class="tl-time">Mientras recoges la cocina</div><div class="tl-desc">Pon las patatas del martes y jueves a hervir. Son ~260g en total.</div></div>
+              <div class="tl-item"><div class="tl-time">10 min después</div><div class="tl-desc">Patatas listas → tupper en nevera. Divide el fiambre en bolsitas para 3–4 días. Lava y seca la lechuga/canónigos — tupper con papel de cocina, duran 4–5 días.</div></div>
+              <div class="tl-item"><div class="tl-time">Opcional +5 min</div><div class="tl-desc">Pesa y congela las raciones de carne en bolsitas individuales. La noche anterior sacas la del día siguiente a la nevera.</div></div>
             </div>
           </div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">🗓 Miércoles — segundo día de cocina</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🐟</div><div class="tc-title">Comida (día 3) — cocina en lote</div></div>
-          <div class="tc-body">Toca merluza en la comida y lenguado en la cena. <strong>Cocínalos los dos a la vez al mediodía</strong> — el lenguado aguanta en nevera hasta la noche. Limpias una sola vez. También puedes preparar la comida del jueves (día 4) mientras tienes la cocina en marcha — la ensalada de patata se monta en frío.</div>
+          <div class="tc-body">Toca merluza en la comida y lenguado en la cena. <strong>Cocínalos los dos a la vez al mediodía</strong> — el lenguado aguanta en nevera hasta la noche. También puedes preparar la comida del jueves mientras tienes la cocina en marcha.</div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">🗓 Viernes — tercer día de cocina</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🦃</div><div class="tc-title">Comida (día 5) — prepara también el sábado</div></div>
-          <div class="tc-body">Cocinas las chuletas de pavo del viernes. <strong>Si quieres, prepara también la comida del sábado (día 6)</strong> — el lomo de cerdo con guisantes se hace rápido y aguanta 2 días en nevera. El sábado solo calientas.</div>
+          <div class="tc-body">Cocinas las chuletas de pavo del viernes. <strong>Si quieres, prepara también la comida del sábado</strong> — el lomo de cerdo con guisantes aguanta 2 días en nevera. El sábado solo calientas.</div>
         </div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🍔</div><div class="tc-title">Burguer de pollo (cena sábado)</div></div>
           <div class="tc-body">Compra el burguer ya hecho en Mercadona o prepara dos el jueves mientras cocinas la cena. <strong>El sábado solo calentas — 5 minutos.</strong></div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">🫘 Garbanzos — olla a presión</div>
         <div class="tc">
@@ -185,62 +180,17 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="tc-body">
             <div class="tl">
               <div class="tl-item"><div class="tl-time">Remojar</div><div class="tl-desc">Deja los garbanzos secos en remojo 8–12h (la noche antes).</div></div>
-              <div class="tl-item"><div class="tl-time">Olla a presión</div><div class="tl-desc">Escurre, añade agua (doble de volumen), sal y laurel. Cierra y cuece 20–25 min a presión alta. Deja despresurizar sola.</div></div>
-              <div class="tl-item"><div class="tl-time">Pesar y congelar</div><div class="tl-desc">Escurre bien. Pesa porciones de <strong>240g cocidos</strong> (= tu ración del día 2). Congela en bolsas. La noche anterior sacas una bolsa a la nevera.</div></div>
-            </div>
-            <em style="display:block;margin-top:8px">El PDF dice: pesar legumbres de bote ya cocidas y escurridas — lo mismo aplica a las tuyas cocidas en casa.</em>
-          </div>
-        </div>
-      </div>
-
-      <div class="ts">
-        <div class="ts-title">🦐 Langostinos congelados con piel</div>
-        <div class="tc">
-          <div class="tc-head"><div class="tc-icon">🦐</div><div class="tc-title">Cómo usar tus langostinos como las gambas</div></div>
-          <div class="tc-body">
-            El PDF indica pesar en crudo. Con langostinos con piel congelados el proceso es:
-            <div class="tl" style="margin-top:8px">
-              <div class="tl-item"><div class="tl-time">Noche anterior</div><div class="tl-desc">Pasa los langostinos de congelador a nevera para que descongelen despacio.</div></div>
-              <div class="tl-item"><div class="tl-time">Antes de cocinar</div><div class="tl-desc">Descascáralos. <strong>Pesas solo la carne limpa — sin piel ni cabeza.</strong> Para tener 170g de carne necesitas comprar ~270g con piel.</div></div>
-              <div class="tl-item"><div class="tl-time">Confirma con David</div><div class="tl-desc">Pregúntale si la ración de 170g es sobre carne limpia (lo más probable) o sobre el peso entero con piel.</div></div>
+              <div class="tl-item"><div class="tl-time">Olla a presión</div><div class="tl-desc">Escurre, añade agua (doble de volumen), sal y laurel. Cierra y cuece 20–25 min a presión alta.</div></div>
+              <div class="tl-item"><div class="tl-time">Pesar y congelar</div><div class="tl-desc">Escurre bien. Pesa porciones de <strong>240g cocidos</strong>. Congela en bolsas. La noche anterior sacas una bolsa a la nevera.</div></div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="ts">
-        <div class="ts-title">🥛 Bebida de avena — nota importante</div>
-        <div class="tc">
-          <div class="tc-head"><div class="tc-icon">🥛</div><div class="tc-title">El PDF no menciona bebidas vegetales</div></div>
-          <div class="tc-body">David Gracia habla solo de leche de vaca en el menú. La bebida de avena Alpro tiene <strong>menos proteína y más HC</strong> que la leche, así que la equivalencia no es exacta. <strong>Lo más seguro: pregúntale a David la cantidad exacta de bebida de avena que equivale a 0,5P+0,5HC.</strong> Hasta que lo confirmes, en el app está marcado con una nota de aviso en cada desayuno que lo usa.</div>
-        </div>
-      </div>
-
-      <div class="ts">
-        <div class="ts-title">⚖️ Pesado y medidas</div>
-        <div class="tc">
-          <div class="tc-head"><div class="tc-icon">📏</div><div class="tc-title">Reglas rápidas</div></div>
-          <div class="tc-body">
-            <strong>Siempre en crudo:</strong> carne, pescado, arroz, patata.<br>
-            <strong>Excepción:</strong> garbanzos cocidos → pesar ya cocidos y escurridos.<br>
-            <strong>AOVE es crítico</strong> — compra cucharas medidoras de 5–10–15g. La diferencia entre 5g y 15g son 100 kcal que no ves.<br><br>
-            <strong>Truco del arroz cocinado (día 7):</strong><br>
-            <em>Si 150g crudo → 250g cocinado, tu ración de 60g crudo = 60×250÷150 = 100g cocinado.</em><br><br>
-            <strong>Medidas caseras:</strong> cuando lleves 2–3 semanas pesando, anota equivalencias: "130g patata = patata mediana de mi cocina". Con el tiempo dejas de pesar sin perder precisión.
-          </div>
-        </div>
-      </div>
-
       <div class="ts">
         <div class="ts-title">🧠 Momento difícil — fin del día</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">⚡</div><div class="tc-title">Plan anti-ansiedad nocturna</div></div>
-          <div class="tc-body">
-            <strong>1.</strong> Toma la merienda antes de decidir nada.<br>
-            <strong>2.</strong> Cenas rápidas (&lt;10 min): revuelto de huevos, tortilla, lenguado a la plancha, burguer de pollo.<br>
-            <strong>3.</strong> Si algo salió mal hoy — retomas mañana. Sin drama.<br><br>
-            <em>"Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando." — David Gracia</em>
-          </div>
+          <div class="tc-body"><strong>1.</strong> Toma la merienda antes de decidir nada.<br><strong>2.</strong> Cenas rápidas (&lt;10 min): revuelto de huevos, tortilla, lenguado a la plancha, burguer de pollo.<br><strong>3.</strong> Si algo salió mal hoy — retomas mañana. Sin drama.<br><br><em>"Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando." — David Gracia</em></div>
         </div>
       </div>
     </div>
@@ -249,7 +199,6 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
     <div class="screen" id="peso">
       <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">⚖️ Guía de pesos</div>
       <div style="font-size:13px;color:var(--t3);margin-bottom:14px">Lo que necesitas saber para el día a día</div>
-
       <div class="ts">
         <div class="ts-title">Reglas básicas</div>
         <div class="tc">
@@ -257,110 +206,55 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="tc-body">Carne, pescado, arroz, patata, verduras — siempre en crudo.<br><strong>Excepción: legumbres de bote o cocidas en casa</strong> → pesar ya cocidas y escurridas.<br><br><strong>El AOVE es crítico.</strong> Compra cucharas medidoras de 5–10–15g. La diferencia entre 5g y 15g son 100 kcal que no ves.</div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">Crudo → Asado</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🫑</div><div class="tc-title">Verduras asadas</div></div>
-          <div class="tc-body">
-            Las verduras pierden agua al asarse. Si el plan dice 150g, pesas 150g en crudo — lo que queda asado es tu ración.<br><br>
-            <strong>Calabacín:</strong> 150g crudo → ~90–100g asado<br>
-            <strong>Pimientos:</strong> 150g crudo → ~100–110g asado<br>
-            <strong>Zanahoria:</strong> 150g crudo → ~120g asado<br>
-            <strong>Berenjena:</strong> 150g crudo → ~80–90g asado<br>
-            <strong>Cebolla:</strong> 150g crudo → ~100g asado<br><br>
-            <em>Siempre pesa en crudo — no hace falta pesar después de asar.</em>
-          </div>
+          <div class="tc-body">Las verduras pierden agua al asarse. Pesas en crudo — lo que queda asado es tu ración.<br><br><strong>Calabacín:</strong> 150g crudo → ~90–100g asado<br><strong>Pimientos:</strong> 150g crudo → ~100–110g asado<br><strong>Zanahoria:</strong> 150g crudo → ~120g asado<br><strong>Berenjena:</strong> 150g crudo → ~80–90g asado<br><strong>Cebolla:</strong> 150g crudo → ~100g asado<br><br><em>Siempre pesa en crudo — no hace falta pesar después de asar.</em></div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">Crudo → Cocido</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🍚</div><div class="tc-title">Arroz y cereales</div></div>
-          <div class="tc-body">
-            <strong>Arroz blanco:</strong> 60g crudo → ~180g cocido<br>
-            <strong>Arroz integral:</strong> 60g crudo → ~150g cocido<br>
-            <strong>Quinoa:</strong> 60g crudo → ~150g cocido<br><br>
-            <strong>Si cocinas para dos (regla de tres de David):</strong><br>
-            <em>150g crudo → 450g cocido. Tu ración de 60g crudo = 60×450÷150 = 180g cocido.</em>
-          </div>
+          <div class="tc-body"><strong>Arroz blanco:</strong> 60g crudo → ~180g cocido<br><strong>Arroz integral:</strong> 60g crudo → ~150g cocido<br><strong>Quinoa:</strong> 60g crudo → ~150g cocido<br><br><strong>Si cocinas para dos (regla de tres):</strong><br><em>150g crudo → 450g cocido. Tu ración de 60g crudo = 60×450÷150 = 180g cocido.</em></div>
         </div>
         <div class="tc" style="margin-top:0">
           <div class="tc-head"><div class="tc-icon">🥔</div><div class="tc-title">Patata</div></div>
-          <div class="tc-body">
-            <strong>Patata hervida:</strong> 130g crudo → ~125g cocida (pierde poco)<br>
-            <strong>Patata al micro:</strong> 130g crudo → ~100–110g (pierde algo de agua)<br>
-            <strong>Patata asada:</strong> 130g crudo → ~90–100g<br><br>
-            <em>Pesa siempre en crudo — es lo más fiable.</em>
-          </div>
+          <div class="tc-body"><strong>Patata hervida:</strong> 130g crudo → ~125g cocida<br><strong>Patata al micro:</strong> 130g crudo → ~100–110g<br><strong>Patata asada:</strong> 130g crudo → ~90–100g<br><br><em>Pesa siempre en crudo.</em></div>
         </div>
         <div class="tc" style="margin-top:0">
           <div class="tc-head"><div class="tc-icon">🍗</div><div class="tc-title">Carnes y pescado</div></div>
-          <div class="tc-body">
-            <strong>Pollo a la plancha:</strong> 150g crudo → ~110–120g cocinado<br>
-            <strong>Ternera a la plancha:</strong> 160g crudo → ~120–130g cocinada<br>
-            <strong>Cerdo a la plancha:</strong> 160g crudo → ~120g cocinado<br>
-            <strong>Merluza al horno:</strong> 170g crudo → ~140g cocinada<br>
-            <strong>Lenguado a la plancha:</strong> 115g crudo → ~90g cocinado<br><br>
-            <em>Pesa siempre en crudo. El peso cocinado es solo referencia visual.</em>
-          </div>
+          <div class="tc-body"><strong>Pollo a la plancha:</strong> 150g crudo → ~110–120g cocinado<br><strong>Ternera a la plancha:</strong> 160g crudo → ~120–130g cocinada<br><strong>Cerdo a la plancha:</strong> 160g crudo → ~120g cocinado<br><strong>Merluza al horno:</strong> 170g crudo → ~140g cocinada<br><strong>Lenguado a la plancha:</strong> 115g crudo → ~90g cocinado<br><br><em>Pesa siempre en crudo.</em></div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">Casos especiales</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🫘</div><div class="tc-title">Garbanzos cocidos en casa</div></div>
-          <div class="tc-body">
-            Los haces en olla a presión y congelas en porciones de <strong>240g cocidos y escurridos</strong> — exactamente igual que los de bote.<br><br>
-            <strong>Rendimiento:</strong> 100g de garbanzos secos → ~240–260g cocidos.<br>
-            Así que 100g secos ≈ 1 ración tuya.
-          </div>
+          <div class="tc-body">Congela en porciones de <strong>240g cocidos y escurridos</strong>.<br><strong>Rendimiento:</strong> 100g secos → ~240–260g cocidos.</div>
         </div>
         <div class="tc" style="margin-top:0">
           <div class="tc-head"><div class="tc-icon">🦐</div><div class="tc-title">Langostinos con piel congelados</div></div>
-          <div class="tc-body">
-            Tu ración es <strong>170g de carne limpia</strong> (sin piel ni cabeza).<br><br>
-            Para tener 170g de carne necesitas comprar ~<strong>270g con piel</strong>.<br><br>
-            Proceso: descongela en nevera → descasca → pesa la carne limpia → cocina.<br><br>
-            <em>Confirma con David si la ración es sobre carne limpia o peso total.</em>
-          </div>
+          <div class="tc-body">Tu ración es <strong>170g de carne limpia</strong> (sin piel ni cabeza).<br>Para 170g de carne necesitas ~<strong>270g con piel</strong>.<br>Proceso: descongela en nevera → descasca → pesa la carne limpia → cocina.<br><br><em>Confirma con David si la ración es sobre carne limpia o peso total.</em></div>
         </div>
         <div class="tc" style="margin-top:0">
           <div class="tc-head"><div class="tc-icon">🫒</div><div class="tc-title">AOVE — el más importante</div></div>
-          <div class="tc-body">
-            <strong>5g AOVE</strong> = 1 cucharita rasa = 45 kcal<br>
-            <strong>10g AOVE</strong> = 2 cucharitas = 90 kcal<br>
-            <strong>15g AOVE</strong> = 1 cucharada sopera = 135 kcal<br><br>
-            La diferencia entre 5g y 15g son <strong>90 kcal</strong> que no ves ni notas — pero suman. Usa siempre cucharas medidoras.
-          </div>
+          <div class="tc-body"><strong>5g AOVE</strong> = 1 cucharita rasa = 45 kcal<br><strong>10g AOVE</strong> = 2 cucharitas = 90 kcal<br><strong>15g AOVE</strong> = 1 cucharada sopera = 135 kcal<br><br>La diferencia entre 5g y 15g son <strong>90 kcal</strong> que no ves. Usa siempre cucharas medidoras.</div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">Cuando sales del plan</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🧠</div><div class="tc-title">Sin drama</div></div>
-          <div class="tc-body">
-            Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando.<br><br>
-            <strong>Si saliste del plan:</strong> retomas en la siguiente comida. No en el día siguiente, no el lunes — en la siguiente comida.<br><br>
-            <strong>Restaurante:</strong> prioriza proteína, pide salsas aparte, elige verdura de acompañamiento, fruta de postre. Si es una ocasión especial — disfrútalo sin culpa.
-          </div>
+          <div class="tc-body">Lo que haces la mayor parte del tiempo importa mucho más que lo que haces de vez en cuando.<br><br><strong>Si saliste del plan:</strong> retomas en la siguiente comida. No el lunes — en la siguiente comida.<br><br><strong>Restaurante:</strong> prioriza proteína, pide salsas aparte, elige verdura, fruta de postre. Si es una ocasión especial — disfrútalo sin culpa.</div>
         </div>
       </div>
-
       <div class="ts">
         <div class="ts-title">Medidas caseras útiles</div>
         <div class="tc">
           <div class="tc-head"><div class="tc-icon">🏠</div><div class="tc-title">Crea tus referencias</div></div>
-          <div class="tc-body">
-            Después de 2–3 semanas pesando, anota tus equivalencias caseras:<br><br>
-            <em>"130g patata = patata mediana de mi cocina"</em><br>
-            <em>"60g arroz = X cucharadas de mi cuchara"</em><br>
-            <em>"150g calabacín = medio calabacín pequeño"</em><br><br>
-            Con el tiempo dejas de pesar todo sin perder precisión. Pero empieza pesando — el ojo se educa con práctica.
-          </div>
+          <div class="tc-body">Después de 2–3 semanas pesando, anota tus equivalencias:<br><br><em>"130g patata = patata mediana de mi cocina"</em><br><em>"60g arroz = X cucharadas de mi cuchara"</em><br><em>"150g calabacín = medio calabacín pequeño"</em><br><br>Con el tiempo dejas de pesar todo sin perder precisión.</div>
         </div>
       </div>
     </div>
@@ -370,7 +264,6 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
       <div style="font-size:19px;font-weight:700;letter-spacing:-.3px;margin-bottom:4px">🛒 Lista de compra</div>
       <p style="font-size:13px;color:var(--t3);margin-bottom:10px">Lunes · 13h pausa · Mercadona + Gadis Arteixo</p>
       <div class="shop-note">💡 Ya tienes en casa: AOVE, sal, especias, vinagre, mostaza, garbanzos congelados. Solo compra lo de aquí.</div>
-
       <div class="ss">Carnes y embutidos</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🥩 Carnes y embutidos <span class="ca">›</span></div>
@@ -390,39 +283,35 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Solomillo de cerdo (cena viernes)</span></div><span class="si-q">170g</span></div>
         </div>
       </div>
-
       <div class="ss">Pescado y marisco</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🐟 Pescado y marisco <span class="ca">›</span></div>
         <div class="sc-body">
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Merluza filetes (comida miércoles)</span></div><span class="si-q">180g</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Lenguado filetes (cena miércoles)</span></div><span class="si-q">125g</span></div>
-          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Langostinos congelados con piel (comida domingo) — pesar carne limpia</span></div><span class="si-q">~270g con piel</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Langostinos congelados con piel (comida domingo)</span></div><span class="si-q">~270g con piel</span></div>
         </div>
       </div>
-
       <div class="ss">Huevos y lácteos</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🥚 Huevos y lácteos <span class="ca">›</span></div>
         <div class="sc-body">
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Huevos L</span></div><span class="si-q">1 docena</span></div>
-          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Bebida de avena Alpro (miércoles, viernes, domingo desayuno)</span></div><span class="si-q">1–2 × 1L</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Bebida de avena Alpro (miércoles, viernes, domingo)</span></div><span class="si-q">1–2 × 1L</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso en lonchas (desayuno lunes y viernes)</span></div><span class="si-q">1 pkt</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso fresco entero (desayuno miércoles y domingo)</span></div><span class="si-q">~150g</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Queso light (almuerzo miércoles y domingo)</span></div><span class="si-q">~50g</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Yogur desnatado 0% (merienda martes, jueves y sábado)</span></div><span class="si-q">3 uds</span></div>
         </div>
       </div>
-
       <div class="ss">Legumbres</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🫘 Legumbres <span class="ca">›</span></div>
         <div class="sc-body">
-          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Garbanzos secos (cocer en olla a presión y congelar en porciones de 240g)</span></div><span class="si-q">500g — mensual</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Garbanzos secos (cocer en olla a presión y congelar)</span></div><span class="si-q">500g — mensual</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Guisantes frescos o congelados (comida sábado)</span></div><span class="si-q">200g</span></div>
         </div>
       </div>
-
       <div class="ss">Verduras y hortalizas</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🥦 Verduras <span class="ca">›</span></div>
@@ -434,15 +323,14 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Zanahoria</span></div><span class="si-q">1 bolsa</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Tomate</span></div><span class="si-q">3–4 uds</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pepino (comida jueves)</span></div><span class="si-q">1 ud grande</span></div>
-          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Espárragos verdes / trigueros (cena jueves + comida jueves)</span></div><span class="si-q">2 manojos</span></div>
-          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Champiñones (cena jueves + cena sábado)</span></div><span class="si-q">~300g</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Espárragos verdes / trigueros</span></div><span class="si-q">2 manojos</span></div>
+          <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Champiñones</span></div><span class="si-q">~300g</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Pimientos (cena miércoles)</span></div><span class="si-q">2–3 uds</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Calabacín (cena sábado)</span></div><span class="si-q">1 ud</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Remolacha (cena viernes)</span></div><span class="si-q">1 pkt</span></div>
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Verduras libres variadas (brócoli, judías…)</span></div><span class="si-q">~600g</span></div>
         </div>
       </div>
-
       <div class="ss">Frutas</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🍑 Frutas de temporada <span class="ca">›</span></div>
@@ -451,7 +339,6 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Limón</span></div><span class="si-q">2 uds</span></div>
         </div>
       </div>
-
       <div class="ss">Cereales y pan</div>
       <div class="sc">
         <div class="sc-head" onclick="togC(this)">🍞 Cereales y pan <span class="ca">›</span></div>
@@ -461,7 +348,6 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
           <div class="si" onclick="togSI(this)"><div class="si-l"><div class="cb"></div><span class="si-n">Maíz en lata</span></div><span class="si-q">1 lata</span></div>
         </div>
       </div>
-
       <button class="reset-btn" onclick="resetAll()">🗑 Borrar marcados</button>
     </div>
 
@@ -469,184 +355,95 @@ html,body{height:100%;background:var(--bg);font-family:-apple-system,'SF Pro Tex
 </div>
 
 <script>
-const DAYS = [
-  {
-    name:'Día 1', week:'Lunes',
-    cook:true, prep:false,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con york y queso',
-       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 100g york <span class="rc">(1P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🍗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Muslo de pollo con patata y verduras',
-       items:`🍗 150g muslo pollo <span class="rc">(1,5P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Después pon patatas a hervir para martes y jueves.</div>`,mac:'p15 hc2 g15'},
-      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Ternera con patata al micro',
-       items:`🥩 160g ternera <span class="rc">(1P · 1G)</span><br>🥔 130g patata al micro con especias <span class="rc">(1HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><br>🥗 Ensalada libre`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 2', week:'Martes',
-    cook:false, prep:true,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
-       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🫘',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Garbanzos con verduras y bacon',
-       items:`🫘 240g garbanzos cocidos (descongelados) <span class="rc">(1HC · 1P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥓 30g bacon <span class="rc">(0,5P · 0,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Saca los garbanzos del congelador la noche del lunes.</div>`,mac:'p15 hc2 g1'},
-      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
-       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🍗',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Contramuslo de pollo con ensalada',
-       items:`🍗 100g contramuslo pollo sin piel <span class="rc">(1P)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 3', week:'Miércoles',
-    cook:true, prep:false,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',
-       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena que equivale a 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🐟',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Merluza con patata y verduras',
-       items:`🐟 170g merluza <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Aprovecha y prepara también el lenguado de la cena.</div>`,mac:'p15 hc2 g15'},
-      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🐟',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Lenguado con pimientos y cebolla',
-       items:`🐟 115g lenguado <span class="rc">(1P)</span><br>🫑 150g pimientos <span class="rc">(0,5HC)</span><br>🧅 120g cebolla <span class="rc">(0,5HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 4', week:'Jueves',
-    cook:false, prep:true,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
-       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🥗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Ensalada de patata con pollo y huevo',
-       items:`🥔 130g patata <span class="rc">(1HC)</span><br>🥒 175g pepino <span class="rc">(0,25HC)</span><br>🌿 125g espárragos <span class="rc">(0,25HC)</span><br>🌽 30g maíz <span class="rc">(0,25HC)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span><br>🥚 1 huevo L <span class="rc">(0,5P · 0,5G)</span><br>🍗 100g pechuga pollo <span class="rc">(1P)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Comida pre-preparada — ensalada montada en frío con la patata del lunes.</div>`,mac:'p15 hc2 g1'},
-      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
-       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span><div class="tbox">💪 Jueves: cansancio acumulado. Merienda lista, sin pensar.</div>`,mac:'hc05'},
-      {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Revuelto de huevos con trigueros y champis',
-       items:`🥚 2 huevos L <span class="rc">(1P · 1G)</span><br>🌿 180g trigueros <span class="rc">(0,5HC)</span><br>🍄 150g champiñones <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 5', week:'Viernes',
-    cook:true, prep:false,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan, york y queso',
-       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🥩 50g york <span class="rc">(0,5P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🦃',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Chuletas de pavo con patata y verduras',
-       items:`🦃 150g chuletas pavo <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Si quieres, prepara también la comida del sábado (lomo + guisantes).</div>`,mac:'p15 hc2 g15'},
-      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Solomillo de cerdo con ensalada',
-       items:`🥩 160g solomillo cerdo <span class="rc">(1P · 1G)</span><br>🥗 125g canónigos <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 125g tomate <span class="rc">(0,25HC)</span> + 50g remolacha <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 6', week:'Sábado',
-    cook:false, prep:true,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',
-       items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🥩',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Lomo de cerdo con guisantes y cebolla',
-       items:`🥩 200g lomo de cerdo <span class="rc">(1,5P · 1G)</span><br>🫛 180g guisantes <span class="rc">(1,5HC)</span><br>🧅 120g cebolla pochada <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><div class="tbox">🧊 Comida pre-preparada del viernes — solo calentar.</div>`,mac:'p15 hc2 g15'},
-      {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',
-       items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🍔',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Burguer de pollo con salteado de verduras',
-       items:`🍔 100g burguer pollo <span class="rc">(1P)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 75g champiñones <span class="rc">(0,25HC)</span> + 150g calabacín <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  },
-  {
-    name:'Día 7', week:'Domingo',
-    cook:false, prep:true,
-    meals:[
-      {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',
-       items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
-      {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
-      {icon:'🍤',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Langostinos con arroz y verduras',
-       items:`🦐 170g langostinos (carne limpia, sin piel ni cabeza) <span class="rc">(1,5P)</span><br>🍚 60g arroz en crudo <span class="rc">(2HC)</span><br>🥦 150g verduras libres<br>🫒 15g AOVE <span class="rc">(1,5G)</span><div class="wbox">⚠️ Langostinos con piel congelados: descongela, descasca y pesa solo la carne limpia. 170g carne ≈ 270g con piel. Confirma con David si la ración es sobre carne limpia.</div>`,mac:'p15 hc2 g15'},
-      {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',
-       items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
-      {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Tortilla con ensalada',
-       items:`🥚 2 huevos L — tortilla <span class="rc">(1P · 1G)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 125g espárragos <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
-    ]
-  }
+const DAYS=[
+  {name:'Día 1',week:'Lunes',cook:true,prep:false,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con york y queso',items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 100g york <span class="rc">(1P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🍗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Muslo de pollo con patata y verduras',items:`🍗 150g muslo pollo <span class="rc">(1,5P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Después pon patatas a hervir para martes y jueves.</div>`,mac:'p15 hc2 g15'},
+    {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Ternera con patata al micro',items:`🥩 160g ternera <span class="rc">(1P · 1G)</span><br>🥔 130g patata al micro con especias <span class="rc">(1HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><br>🥗 Ensalada libre`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 2',week:'Martes',cook:false,prep:true,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🫘',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Garbanzos con verduras y bacon',items:`🫘 240g garbanzos cocidos <span class="rc">(1HC · 1P)</span><br>🥦 150g verduras libres <span class="rc">(0,5HC)</span><br>🥓 30g bacon <span class="rc">(0,5P · 0,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Saca los garbanzos del congelador la noche del lunes.</div>`,mac:'p15 hc2 g1'},
+    {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🍗',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Contramuslo de pollo con ensalada',items:`🍗 100g contramuslo pollo sin piel <span class="rc">(1P)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 3',week:'Miércoles',cook:true,prep:false,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🐟',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Merluza con patata y verduras',items:`🐟 170g merluza <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Aprovecha y prepara también el lenguado de la cena.</div>`,mac:'p15 hc2 g15'},
+    {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🐟',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Lenguado con pimientos y cebolla',items:`🐟 115g lenguado <span class="rc">(1P)</span><br>🫑 150g pimientos <span class="rc">(0,5HC)</span><br>🧅 120g cebolla <span class="rc">(0,5HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 4',week:'Jueves',cook:false,prep:true,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🥗',cls:'i-com',label:'Comida · 1,5P · 2HC · 1G',name:'Ensalada de patata con pollo y huevo',items:`🥔 130g patata <span class="rc">(1HC)</span><br>🥒 175g pepino <span class="rc">(0,25HC)</span><br>🌿 125g espárragos <span class="rc">(0,25HC)</span><br>🌽 30g maíz <span class="rc">(0,25HC)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span><br>🥚 1 huevo L <span class="rc">(0,5P · 0,5G)</span><br>🍗 100g pechuga pollo <span class="rc">(1P)</span><br>🫒 10g AOVE <span class="rc">(1G)</span><div class="tbox">🧊 Comida pre-preparada — monta en frío con la patata del lunes.</div>`,mac:'p15 hc2 g1'},
+    {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span><div class="tbox">💪 Jueves: cansancio acumulado. Merienda lista, sin pensar.</div>`,mac:'hc05'},
+    {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Revuelto de huevos con trigueros y champis',items:`🥚 2 huevos L <span class="rc">(1P · 1G)</span><br>🌿 180g trigueros <span class="rc">(0,5HC)</span><br>🍄 150g champiñones <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 5',week:'Viernes',cook:true,prep:false,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan, york y queso',items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🥩 50g york <span class="rc">(0,5P)</span><br>🧀 15g queso <span class="rc">(0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + lomo',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🥩 35g lomo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🦃',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Chuletas de pavo con patata y verduras',items:`🦃 150g chuletas pavo <span class="rc">(1,5P)</span><br>🥦 250g verduras libres <span class="rc">(0,5HC)</span><br>🥔 130g patata <span class="rc">(1HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span><br>🍑 1 pieza fruta <span class="rc">(0,5HC)</span><div class="tbox">🍳 Cocinas hoy para ti y Jesús. Si quieres, prepara también la comida del sábado.</div>`,mac:'p15 hc2 g15'},
+    {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🥩',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Solomillo de cerdo con ensalada',items:`🥩 160g solomillo cerdo <span class="rc">(1P · 1G)</span><br>🥗 125g canónigos <span class="rc">(0,25HC)</span> + 65g zanahoria <span class="rc">(0,25HC)</span> + 125g tomate <span class="rc">(0,25HC)</span> + 50g remolacha <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 6',week:'Sábado',cook:false,prep:true,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Pan con jamón serrano',items:`🍞 40g pan <span class="rc">(1HC)</span><br>🥩 70g jamón serrano <span class="rc">(1P)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + pavo',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🦃 50g pavo <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🥩',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Lomo de cerdo con guisantes y cebolla',items:`🥩 200g lomo de cerdo <span class="rc">(1,5P · 1G)</span><br>🫛 180g guisantes <span class="rc">(1,5HC)</span><br>🧅 120g cebolla pochada <span class="rc">(0,5HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span><div class="tbox">🧊 Comida pre-preparada del viernes — solo calentar.</div>`,mac:'p15 hc2 g15'},
+    {icon:'🫙',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Yogur desnatado 0%',items:`🫙 1 yogur desnatado 0% <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🍔',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Burguer de pollo con salteado de verduras',items:`🍔 100g burguer pollo <span class="rc">(1P)</span><br>🥕 65g zanahoria <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span> + 75g champiñones <span class="rc">(0,25HC)</span> + 150g calabacín <span class="rc">(0,25HC)</span><br>🫒 15g AOVE <span class="rc">(1,5G)</span>`,mac:'p1 hc1 g15'}
+  ]},
+  {name:'Día 7',week:'Domingo',cook:false,prep:true,meals:[
+    {icon:'☀️',cls:'i-des',label:'Desayuno · 1P · 1HC · 0,5G',name:'Bebida de avena con pan y queso fresco',items:`🥛 200ml bebida avena Alpro <span class="rc">(≈0,5P · 0,5HC)</span><br>🍞 20g pan <span class="rc">(0,5HC)</span><br>🧀 70g queso fresco entero <span class="rc">(0,5P · 0,5G)</span><div class="wbox">⚠️ Confirma con David la cantidad exacta de bebida de avena para 0,5P+0,5HC.</div>`,mac:'p1 hc1 g05'},
+    {icon:'🍑',cls:'i-alm',label:'Almuerzo · 0,5P · 0,5HC · 0G',name:'Fruta + queso light',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span><br>🧀 20g queso light <span class="rc">(0,5P)</span>`,mac:'p05 hc05'},
+    {icon:'🍤',cls:'i-com',label:'Comida · 1,5P · 2HC · 1,5G',name:'Langostinos con arroz y verduras',items:`🦐 170g langostinos carne limpia <span class="rc">(1,5P)</span><br>🍚 60g arroz en crudo <span class="rc">(2HC)</span><br>🥦 150g verduras libres<br>🫒 15g AOVE <span class="rc">(1,5G)</span><div class="wbox">⚠️ Langostinos con piel congelados: descongela, descasca y pesa solo la carne limpia. 170g carne ≈ 270g con piel.</div>`,mac:'p15 hc2 g15'},
+    {icon:'🍎',cls:'i-mer',label:'Merienda · 0P · 0,5HC · 0G',name:'Fruta de temporada',items:`🍑 1 pieza fruta 100–150g <span class="rc">(0,5HC)</span>`,mac:'hc05'},
+    {icon:'🥚',cls:'i-cen',label:'Cena · 1P · 1HC · 1,5G',name:'Tortilla con ensalada',items:`🥚 2 huevos L — tortilla <span class="rc">(1P · 1G)</span><br>🥗 125g lechuga <span class="rc">(0,25HC)</span> + 125g espárragos <span class="rc">(0,25HC)</span> + 30g maíz <span class="rc">(0,25HC)</span> + 60g cebolla <span class="rc">(0,25HC)</span><br>🫒 5g AOVE <span class="rc">(0,5G)</span>`,mac:'p1 hc1 g15'}
+  ]}
 ];
 
-let cur = 0;
-
-function macHTML(mac) {
-  const parts = mac.split(' ');
-  const map = {p1:'P 1',p15:'P 1,5',p05:'P 0,5',hc1:'HC 1',hc2:'HC 2',hc05:'HC 0,5',g15:'G 1,5',g1:'G 1',g05:'G 0,5'};
-  const cls = {p1:'p',p15:'p',p05:'p',hc1:'hc',hc2:'hc',hc05:'hc',g15:'g',g1:'g',g05:'g'};
+let cur=0;
+function macHTML(mac){
+  const parts=mac.split(' ');
+  const map={p1:'P 1',p15:'P 1,5',p05:'P 0,5',hc1:'HC 1',hc2:'HC 2',hc05:'HC 0,5',g15:'G 1,5',g1:'G 1',g05:'G 0,5'};
+  const cls={p1:'p',p15:'p',p05:'p',hc1:'hc',hc2:'hc',hc05:'hc',g15:'g',g1:'g',g05:'g'};
   return parts.filter(p=>map[p]).map(p=>`<span class="mm ${cls[p]}">${map[p]}</span>`).join('');
 }
-
-function renderDay() {
-  const d = DAYS[cur];
-  document.getElementById('day-title').textContent = d.name;
-  document.getElementById('day-sub').textContent = d.week;
-  const badges = document.getElementById('day-badges');
-  let b = `<span class="rp tot">12,5 rac.</span><span class="rp p">P 4</span><span class="rp hc">HC 5</span><span class="rp g">G 3,5</span>`;
-  if(d.cook) b += `<span class="rp cook">🍳 Cocinas hoy</span>`;
-  if(d.prep) b += `<span class="rp prep">🧊 Pre-preparado</span>`;
-  badges.innerHTML = b;
-  document.getElementById('meal-container').innerHTML = d.meals.map(m=>`
+function renderDay(){
+  const d=DAYS[cur];
+  document.getElementById('day-title').textContent=d.name;
+  document.getElementById('day-sub').textContent=d.week;
+  let b=`<span class="rp tot">12,5 rac.</span><span class="rp p">P 4</span><span class="rp hc">HC 5</span><span class="rp g">G 3,5</span>`;
+  if(d.cook) b+=`<span class="rp cook">🍳 Cocinas hoy</span>`;
+  if(d.prep) b+=`<span class="rp prep">🧊 Pre-preparado</span>`;
+  document.getElementById('day-badges').innerHTML=b;
+  document.getElementById('meal-container').innerHTML=d.meals.map(m=>`
     <div class="meal">
       <div class="meal-head" onclick="togM(this)">
         <div class="meal-icon ${m.cls}">${m.icon}</div>
-        <div class="meal-info">
-          <div class="meal-label">${m.label}</div>
-          <div class="meal-name">${m.name}</div>
-        </div>
+        <div class="meal-info"><div class="meal-label">${m.label}</div><div class="meal-name">${m.name}</div></div>
         <div class="chevron">›</div>
       </div>
-      <div class="meal-body">
-        <div class="items">${m.items}</div>
-        <div class="macros">${macHTML(m.mac)}</div>
-      </div>
+      <div class="meal-body"><div class="items">${m.items}</div><div class="macros">${macHTML(m.mac)}</div></div>
     </div>`).join('');
 }
-
-function changeDay(dir) {
-  cur = (cur+dir+7)%7;
-  renderDay();
-  document.getElementById('meal-container').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function showTab(id) {
+function changeDay(dir){cur=(cur+dir+7)%7;renderDay();}
+function showTab(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('visible'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('visible');
   const idx={days:0,tips:1,peso:2,shop:3};
   document.querySelectorAll('.tab')[idx[id]].classList.add('active');
 }
-function togM(head){
-  head.nextElementSibling.classList.toggle('open');
-  head.querySelector('.chevron').classList.toggle('open');
-}
-function togC(head){
-  head.nextElementSibling.classList.toggle('open');
-  head.querySelector('.ca').classList.toggle('open');
-}
-function togSI(item){
-  item.querySelector('.cb').classList.toggle('checked');
-  item.querySelector('.si-n').classList.toggle('checked');
-}
-function resetAll(){
-  document.querySelectorAll('.cb').forEach(b=>b.classList.remove('checked'));
-  document.querySelectorAll('.si-n').forEach(n=>n.classList.remove('checked'));
-}
+function togM(head){head.nextElementSibling.classList.toggle('open');head.querySelector('.chevron').classList.toggle('open');}
+function togC(head){head.nextElementSibling.classList.toggle('open');head.querySelector('.ca').classList.toggle('open');}
+function togSI(item){item.querySelector('.cb').classList.toggle('checked');item.querySelector('.si-n').classList.toggle('checked');}
+function resetAll(){document.querySelectorAll('.cb').forEach(b=>b.classList.remove('checked'));document.querySelectorAll('.si-n').forEach(n=>n.classList.remove('checked'));}
 renderDay();
 </script>
 </body>
